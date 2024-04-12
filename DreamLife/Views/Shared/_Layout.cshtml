@@ -7,16 +7,55 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/DreamLife.styles.css" asp-append-version="true" />
+    <style>
+        a {
+            font-weight: bold;
+            font-size: large;
+        }
+
+            a:hover {
+                font-weight: 500;
+            }
+
+        p {
+            font-weight: 500;
+        }
+
+        .navbar-brand img {
+            max-height: 50px; /* Adjust height as needed */
+            max-width: 150px; /* Adjust width as needed */
+        }
+
+        .NotificationPanel {
+            background-color: black;
+            color: white;
+            text-align: center;
+            display: block;
+        }
+
+        .slide {
+            display: none;
+            padding: 6px 20px;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        .active {
+            display: block;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white" style="background-color:#009688!important">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">DreamLife</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <a class="navbar-brand" asp-area="" asp-controller="" asp-action="">
+                    <img src="~/images/dreamlifelogo.png" />
+                </a>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
@@ -28,13 +67,27 @@
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Logout</a>
+                            <a class="nav-button text-dark" asp-area="" asp-controller="Home" asp-action="Index">Logout</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+    <div class="NotificationPanel sticky-top">
+        <div>
+        <div class="slide" id="slide1">
+            Hurry Up! What are you waiting for
+        </div>
+        <div class="slide" id="slide2">
+            Many exiting opportunities for you
+        </div>
+        <div class="slide" id="slide3">
+            Wanna try ?
+        </div>
+        </div>
+    </div>
+    <br />
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -49,6 +102,31 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Start with the first slide
+            var currentSlide = 1;
+
+            // Show the first slide
+            $("#slide1").addClass("active");
+
+            // Move to the next slide every 3 seconds
+            setInterval(function () {
+                // Hide current slide
+                $("#slide" + currentSlide).removeClass("active");
+
+                // Move to the next slide
+                currentSlide++;
+                if (currentSlide > 3) {
+                    currentSlide = 1; // Loop back to the first slide
+                }
+
+                // Show the next slide
+                $("#slide" + currentSlide).addClass("active");
+            }, 3000);
+        });
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

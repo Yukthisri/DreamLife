@@ -68,7 +68,7 @@
         /* Style for form submit button */
         .form .login-button {
             display: block;
-            width: 100%;
+            width: 40%;
             font-weight: bold;
             background: linear-gradient(45deg, rgb(16, 137, 211) 0%, rgb(18, 177, 209) 100%);
             color: white;
@@ -92,24 +92,27 @@
 </style>
 <div class="row">
     <div class="col-md-6">
+        <img src="~/images/vim1.jpeg" width="500px" height="400px" />
+    </div>
+    <div class="col-md-6">
         <div class="container1">
             <span>Are you New? Register <a asp-area="" asp-controller="Account" asp-action="Register">Here</a></span>
             <form method="post" class="form">
-            <h3 class="heading">Login</h3>
-            @* <div asp-validation-summary="All" class="text-danger"></div> *@
-            <div>
-                <input asp-for="Name" class="input" placeholder="User Name" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div>
-                <input asp-for="Password" type="password" class="input" placeholder="Password" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <button type="submit" class="login-button">Login</button>
-        </form>
+                <h3 class="heading">Login</h3>
+                @* <div asp-validation-summary="All" class="text-danger"></div> *@
+                <div>
+                    <input asp-for="Name" class="input" placeholder="User Name" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div>
+                    <input asp-for="Password" type="password" class="input" placeholder="Password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div>
+                    <a src="#">Forgot password</a>
+                </div>
+                <button type="submit" class="login-button">Login</button>
+            </form>
         </div>
-    </div>
-    <div class="col-md-6">
-        <img src="~/images/vim1.jpeg" width="500px" height="400px" />
     </div>
 </div>

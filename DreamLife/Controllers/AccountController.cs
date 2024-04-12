@@ -25,14 +25,13 @@ namespace DreamLife.Controllers
         {
             if (ModelState.IsValid)
             {
-                var registration = new Registration
+                var name = new User
                 {
-                    FirstName = model.Name,
+                    Name = model.Name,
                     Email = model.Email,
                     Password = model.Password
               
                 };
-                _context.Registrations.Add(registration);
                 _context.SaveChanges();
 
                 return RedirectToAction("Index", "Home");

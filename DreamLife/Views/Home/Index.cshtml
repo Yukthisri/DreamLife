@@ -11,12 +11,32 @@
         margin-left: -125px;
         margin-right: -125px;
     }
+
+    .slide {
+        display: none;
+        margin-top: 4px;
+        margin-bottom: 2px;
+    }
+
+    .active {
+        display: block;
+    }
 </style>
 <div class="NotificationPanel">
+
     <div style="padding:6px 20px;font-style:italic;">
-        <b>Wanna fullfil your Dreams ? let's Explore</b>
+        <div class="slide" id="slide1">
+            <p>Wanna fullfil your Dreams ? let's Explore</p>
+        </div>
+        <div class="slide" id="slide2">
+            <p>Slide2</p>
+        </div>
+        <div class="slide" id="slide3">
+            <p>Slide3</p>
+        </div>
     </div>
 </div>
+
 <br />
 <div class="row">
 
@@ -42,4 +62,28 @@
     </div>
 
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Start with the first slide
+        var currentSlide = 1;
 
+        // Show the first slide
+        $("#slide1").addClass("active");
+
+        // Move to the next slide every 3 seconds
+        setInterval(function () {
+            // Hide current slide
+            $("#slide" + currentSlide).removeClass("active");
+
+            // Move to the next slide
+            currentSlide++;
+            if (currentSlide > 3) {
+                currentSlide = 1; // Loop back to the first slide
+            }
+
+            // Show the next slide
+            $("#slide" + currentSlide).addClass("active");
+        }, 3000);
+    });
+</script>

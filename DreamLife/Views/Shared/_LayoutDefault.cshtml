@@ -20,6 +20,11 @@
         p {
             font-weight: 500;
         }
+
+        .navbar-brand img {
+            max-height: 50px; /* Adjust height as needed */
+            max-width: 150px; /* Adjust width as needed */
+        }
     </style>
 </head>
 <body style="background-color:#0ce7d07d">
@@ -30,7 +35,9 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">DreamLife</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/images/DremLifeLogo.jpg" class="img" />
+                </a>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">

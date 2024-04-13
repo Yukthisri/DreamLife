@@ -7,10 +7,13 @@
 <h1>@ViewData["Title"]</h1>
 
 <style>
+    body {
+        background: linear-gradient(#060231,#0dcec4);
+    }
     /* Provided styles */
     .container1 {
+        background: linear-gradient(#69ebd9, #11a6b9);
         max-width: 500px;
-        background: wheat;
         border-radius: 40px;
         padding: 25px 35px;
         border: 5px solid rgb(255, 255, 255);
@@ -19,11 +22,13 @@
         margin-bottom: 68px;
     }
 
+    /* Style for form heading */
     .heading {
         text-align: center;
+        font-family: 'Bradley Hand', cursive;
         font-weight: 900;
-        font-size: 30px;
-        color: rgb(16, 137, 211);
+        font-size: 25px;
+        color: rgb(51, 30, 235);
     }
 
     .form {
@@ -53,12 +58,19 @@
                 outline: none;
                 border-inline: 2px solid #12B1D1;
             }
+        /* Style for form labels */
+        .form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
      
         .form .login-button {
             display: block;
-            width: 100%;
+            width: 50%;
             font-weight: bold;
-            background: linear-gradient(45deg, rgb(16, 137, 211) 0%, rgb(18, 177, 209) 100%);
+            background: linear-gradient(rgb(51, 30, 235),#11b3aa);
             color: white;
             padding-block: 15px;
             margin: 20px auto;
@@ -70,7 +82,8 @@
 
             .form .login-button:hover {
                 transform: scale(1.03);
-                box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 23px 10px -20px;
+                background: linear-gradient(#11b3aa,rgb(51, 30, 235));
+                box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 23px 10px -20px;  
             }
 
             .form .login-button:active {
@@ -78,12 +91,19 @@
                 box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 15px 10px -10px;
             }
 </style>
+
 <div class="row">
     <div class="col-md-6">
-        <div class="container1">
-            <h3 class="heading">Register</h3>
-            <form method="post" class="form">
+        <img src="~/images/vim4.jpeg" width="500px" height="400px" />
+    </div>
 
+    <div class="col-md-6">
+        <div style="color:black">
+            <span>Login<a asp-area="" asp-controller="Account" asp-action="Register">Here</a></span>
+        </div>
+        <div class="container1">
+            <form method="post" class="form">
+                <h3 class="heading">Register</h3>
                 <div style="display: flex; justify-content: space-between;">
                     <div style="width: 48%;">
                         <label asp-for="FirstName" placeholder="Name">First Name:</label>
@@ -136,7 +156,5 @@
             </form>
         </div>
     </div>
-    <div class="col-md-6">
-        <img src="~/images/vim4.jpeg" width="500px" height="400px" />
-    </div>
+
 </div>

@@ -6,11 +6,14 @@
 }
 
 <h1>@ViewData["Title"]</h1>
-<style>
+<style> 
     /* Style for form container */
+    body {
+        background: linear-gradient(#060231,#0dcec4);
+    }
     .container1 {
+        background: linear-gradient(#69ebd9, #11a6b9);
         max-width: 400px;
-        background: wheat;
         border-radius: 40px;
         padding: 25px 35px;
         border: 5px solid rgb(255, 255, 255);
@@ -22,9 +25,11 @@
     /* Style for form heading */
     .heading {
         text-align: center;
-        font-weight: 900;
-        font-size: 30px;
-        color: rgb(16, 137, 211);
+        font-family: 'Bradley Hand', cursive;
+        font-weight: 600;
+        font-size: 25px;
+        color: rgb(51, 30, 235);
+      
     }
 
     /* Style for form */
@@ -70,7 +75,7 @@
             display: block;
             width: 40%;
             font-weight: bold;
-            background: linear-gradient(45deg, rgb(16, 137, 211) 0%, rgb(18, 177, 209) 100%);
+            background: linear-gradient(rgb(51, 30, 235),#11b3aa);
             color: white;
             padding-block: 15px;
             margin: 20px auto;
@@ -82,6 +87,7 @@
 
             .form .login-button:hover {
                 transform: scale(1.03);
+                background: linear-gradient(#11b3aa,rgb(51, 30, 235));
                 box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 23px 10px -20px;
             }
 
@@ -89,14 +95,38 @@
                 transform: scale(0.95);
                 box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 15px 10px -10px;
             }
-</style>
+
+    .forgot-password {
+        display: block;
+        margin-top: 3px;
+        margin-right:20px;
+        text-decoration: none;
+        color:white;
+        font-size:15px;
+    }
+
+    /* Style for remember password checkbox */
+    .form-check {
+        margin-top: 15px;
+    }
+
+    .form-check-label {
+        font-weight: normal;
+        color: #333;
+    }
+
+    .log-image{
+        margin-top:20px;
+       border-radius:5px;
+    }
+    </style>
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 log-image">
         <img src="~/images/vim1.jpeg" width="500px" height="400px" />
     </div>
     <div class="col-md-6">
         <div class="container1">
-            <span>Are you New? Register <a asp-area="" asp-controller="Account" asp-action="Register">Here</a></span>
+           
             <form method="post" class="form">
                 <h3 class="heading">Login</h3>
                 @* <div asp-validation-summary="All" class="text-danger"></div> *@
@@ -108,11 +138,17 @@
                     <input asp-for="Password" type="password" class="input" placeholder="Password" />
                     <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
-                <div>
-                    <a src="#">Forgot password</a>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="rememberMe">
+                    <label class="form-check-label" for="rememberMe">Remember Password</label>
                 </div>
                 <button type="submit" class="login-button">Login</button>
+                <a href="#" class="forgot-password">Forgot Password?</a>
+                <div style="color:white">
+                    <span>Are you New? Register <a asp-area="" asp-controller="Account" asp-action="Register">Here</a></span>
+                </div>
             </form>
         </div>
     </div>
 </div>
+

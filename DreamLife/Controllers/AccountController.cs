@@ -21,20 +21,26 @@ namespace DreamLife.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Login(User model)
+        public IActionResult Login(UserViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var name = new User
+                User user = new User();
+                var name = new UserViewModel
                 {
                     Name = model.Name,
-                    Email = model.Email,
                     Password = model.Password
               
                 };
                 _context.SaveChanges();
-
-                return RedirectToAction("Dashboard", "User");
+                if (user.Role == "Admin")
+                {
+                    return RedirectToAction("Dashboard", "Admin");
+                }
+                else
+                {
+                    return RedirectToAction("Dashboard", "User");
+                }
             }
 
             return View(model);
@@ -44,7 +50,7 @@ namespace DreamLife.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Register(Registration model)
+        public IActionResult Register(RegistrationViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -53,9 +59,8 @@ namespace DreamLife.Controllers
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     Gender = model.Gender,
-                    DateofBirth = model.DateofBirth,
+                    DateOfBirth = model.DateofBirth,
                     Email = model.Email,
-                    Password = model.Password,
                     Country = model.Country,
                     Phone = model.Phone,
                     City = model.City

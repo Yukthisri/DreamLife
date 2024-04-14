@@ -1,4 +1,4 @@
-﻿@model DreamLife.Models.User
+﻿@model DreamLife.Models.UserViewModel
 
 @{
 
@@ -125,6 +125,9 @@
         <img src="~/images/vim1.jpeg" width="500px" height="400px" />
     </div>
     <div class="col-md-6">
+        <div class="text-center" style="color:white">
+            <span>Are you New? Register <a asp-area="" asp-controller="Account" asp-action="Register">Here</a></span>
+        </div>
         <div class="container1">
            
             <form method="post" class="form">
@@ -144,9 +147,6 @@
                 </div>
                 <button type="submit" class="login-button">Login</button>
                 <a href="#" class="forgot-password">Forgot Password?</a>
-                <div style="color:white">
-                    <span>Are you New? Register <a asp-area="" asp-controller="Account" asp-action="Register">Here</a></span>
-                </div>
             </form>
         </div>
     </div>

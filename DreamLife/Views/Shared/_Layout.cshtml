@@ -31,6 +31,7 @@
             color: white;
             text-align: center;
             display: block;
+            z-index:0;
         }
 
         .slide {
@@ -47,7 +48,7 @@
 </head>
 <body>
     <header class="sticky-top">
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white" style="background-color:#009688!important">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white" style="background: linear-gradient(#060231,#0dcec4);">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -61,13 +62,20 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Dashboard">Dashboard</a>
                         </li>
+                        <li class="nav-item dropdown text-dark">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">Buy</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background: #0dcec4;width: fit-content;">
+                                <li><a class="dropdown-item" asp-area="" asp-controller="" asp-action="">Package</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="" asp-action="">Package History</a></li>
+                            </ul>
+                        </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Menu</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Help</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-button text-dark" asp-area="" asp-controller="Home" asp-action="Index">Logout</a>
+                            <a class="nav-button text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
                         </li>
                     </ul>
                 </div>

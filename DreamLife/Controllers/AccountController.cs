@@ -2,6 +2,7 @@
 using DreamLife.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace DreamLife.Controllers
 {
@@ -20,31 +21,59 @@ namespace DreamLife.Controllers
         {
             return View();
         }
+        //[HttpPost]
+        //public IActionResult Login(UserViewModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        User user = new User();
+        //        var name = new UserViewModel
+        //        {
+        //            Name = model.Name,
+        //            Password = model.Password
+        //        };
+        //        _context.SaveChanges();
+        //        if (user.Role == "Admin")
+        //        {
+        //            return RedirectToAction("Dashboard", "Admin");
+        //        }
+        //        else
+        //        {
+        //            return RedirectToAction("Dashboard", "User");
+        //        }
+        //    }
+
+        //    return View(model);
+        //}
         [HttpPost]
         public IActionResult Login(UserViewModel model)
         {
             if (ModelState.IsValid)
             {
-                User user = new User();
-                var name = new UserViewModel
-                {
-                    Name = model.Name,
-                    Password = model.Password
-              
-                };
-                _context.SaveChanges();
-                if (user.Role == "Admin")
-                {
-                    return RedirectToAction("Dashboard", "Admin");
-                }
-                else
+                var user = _context.Users.FirstOrDefault(u => u.Name == model.Name && u.Password == model.Password);
+
+                if (user != null)
                 {
                     return RedirectToAction("Dashboard", "User");
                 }
-            }
+                else
+                {
+                    var admin = _context.Admin.FirstOrDefault(u => u.Name == model.Name && u.Password == model.Password);
 
+                    if (admin != null)
+                    {
+                        return RedirectToAction("Dashboard", "Admin");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "Invalid username or password");
+                        return View(model);
+                    }
+                }
+            }
             return View(model);
         }
+
         public IActionResult Register()
         {
             return View();
@@ -54,13 +83,14 @@ namespace DreamLife.Controllers
         {
             if (ModelState.IsValid)
             {
-                var registration = new Registration
+                var registration = new RegistrationViewModel
                 {
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     Gender = model.Gender,
-                    DateOfBirth = model.DateofBirth,
+                    DateofBirth = model.DateofBirth,
                     Email = model.Email,
+                    Password = model.Password,
                     Country = model.Country,
                     Phone = model.Phone,
                     City = model.City
@@ -71,10 +101,14 @@ namespace DreamLife.Controllers
 
                 return RedirectToAction("Index", "Home");
             }
-
             return View(model);
         }
         public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        public IActionResult Profile()
         {
             return View();
         }

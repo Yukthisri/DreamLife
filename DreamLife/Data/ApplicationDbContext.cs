@@ -1,6 +1,5 @@
 ﻿using DreamLife.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 
 namespace DreamLife.Data
 {
@@ -9,6 +8,10 @@ namespace DreamLife.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
-        public DbSet<Registration> Registrations { get; set; }
+        public DbSet<UserViewModel> Users { get; set; }
+
+        public DbSet<AdminViewModel> Admin { get; set; }
+
+        public DbSet<RegistrationViewModel> Registrations { get; set; }
     }
 }

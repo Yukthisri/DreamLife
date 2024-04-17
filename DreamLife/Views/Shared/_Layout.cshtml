@@ -31,7 +31,7 @@
             color: white;
             text-align: center;
             display: block;
-            z-index:0;
+            z-index: 0;
         }
 
         .slide {
@@ -44,6 +44,18 @@
         .active {
             display: block;
         }
+
+        .navbar-profile {
+            margin-right: 10px;
+            padding-right: 2px;
+        }
+
+            .navbar-profile img {
+                height:30px;
+                width: 30px;
+                border-radius: 10px;
+                margin-top: 6px;
+            }
     </style>
 </head>
 <body>
@@ -78,21 +90,28 @@
                             <a class="nav-button text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
                         </li>
                     </ul>
+                   @*  <ul class="navbar-profile">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Profile">
+                                <img src="~/images/profile1.jpg"/>
+                            </a>
+                        </li>
+                    </ul> *@
                 </div>
             </div>
         </nav>
     </header>
     <div class="NotificationPanel sticky-top">
         <div>
-        <div class="slide" id="slide1">
-            Hurry Up! What are you waiting for
-        </div>
-        <div class="slide" id="slide2">
-            Many exiting opportunities for you
-        </div>
-        <div class="slide" id="slide3">
-            Wanna try ?
-        </div>
+            <div class="slide" id="slide1">
+                Hurry Up! What are you waiting for
+            </div>
+            <div class="slide" id="slide2">
+                Many exiting opportunities for you
+            </div>
+            <div class="slide" id="slide3">
+                Wanna try ?
+            </div>
         </div>
     </div>
     <br />

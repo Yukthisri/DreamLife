@@ -2,7 +2,7 @@
 
 namespace DreamLife.Models
 {
-    public class UserViewModel
+    public class AdminViewModel
     {
         [Key]
         public int Id { get; set; }

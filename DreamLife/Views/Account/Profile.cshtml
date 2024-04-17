@@ -1,0 +1,55 @@
+﻿@model DreamLife.Models.RegistrationViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registration Details</title>
+    <style>
+        table {
+            font-family: Arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Registration Details</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+            <th>Date of Birth</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Country</th>
+            <th>Phone</th>
+            <th>City</th>
+        </tr>
+      @*   <tr>
+            <td>@RegisterViewModel.Id</td>
+            <td>@Model.FirstName</td>
+            <td>@Model.LastName</td>
+            <td>@Model.Gender</td>
+            <td>@Model.DateofBirth.ToString("yyyy-MM-dd")</td>
+            <td>@Model.Email</td>
+            <td>@Model.Password</td>
+            <td>@Model.Country</td>
+            <td>@Model.Phone</td>
+            <td>@Model.City</td>
+        </tr> *@
+    </table>
+</body>
+</html>

@@ -1,0 +1,73 @@
+﻿@model List<DreamLife.Models.Registration>
+@{
+    Layout = "_LayoutAd";
+}
+
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #13c1ad;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #ddd;
+    }
+
+    .bt {
+        background: #ff5722;
+        border-radius:20px;
+        border:0;
+    }
+
+    .bt:hover {
+        background: #f73f04;
+    }
+</style>
+<div style="overflow:auto">
+    <h2>Pending Registations</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+            <th>Date of Birth</th>
+            <th>Email</th>
+            <th>Country</th>
+            <th>Phone</th>
+            <th>City</th>
+            <th></th>
+        </tr>
+        @foreach (var registration in Model)
+        {
+            <tr>
+                <td>@registration.Id</td>
+                <td>@registration.FirstName</td>
+                <td>@registration.LastName</td>
+                <td>@registration.Gender</td>
+                <td>@registration.DateOfBirth</td>
+                <td>@registration.Email</td>
+                <td>@registration.Country</td>
+                <td>@registration.Phone</td>
+                <td>@registration.City</td>
+                <td><button class="bt">Create</button></td>
+            </tr>
+        }
+    </table>
+</div>

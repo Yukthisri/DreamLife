@@ -31,7 +31,7 @@
             color: white;
             text-align: center;
             display: block;
-            z-index: 0;
+            z-index:0;
         }
 
         .slide {
@@ -43,13 +43,6 @@
 
         .active {
             display: block;
-        }
-
-        .navbar-profile img {
-            height: 40px;
-            width: 40px;
-            border-radius: 10px;
-            margin-bottom: -14px;
         }
     </style>
 </head>
@@ -67,13 +60,14 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Dashboard">Dashboard</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Dashboard">Dashboard</a>
                         </li>
                         <li class="nav-item dropdown text-dark">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">Buy</a>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">Menu</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background: #0dcec4;width: fit-content;">
-                                <li><a class="dropdown-item" asp-area="" asp-controller="User" asp-action="Package">Package</a></li>
-                                <li><a class="dropdown-item" asp-area="" asp-controller="User" asp-action="PackageHistory">Package History</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Admin" asp-action="Registrations">Registrations</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Admin" asp-action="Users">Members</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Admin" asp-action="Transactions">Transactions</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -85,26 +79,21 @@
                             <a class="nav-button text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
                         </li>
                     </ul>
-                    <ul class="navbar-profile">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Profile">
-                            <img src="~/images/profile1.jpg" />
-                        </a>
-                    </ul>
                 </div>
             </div>
         </nav>
     </header>
     <div class="NotificationPanel sticky-top">
         <div>
-            <div class="slide" id="slide1">
-                Hurry Up! What are you waiting for
-            </div>
-            <div class="slide" id="slide2">
-                Many exiting opportunities for you
-            </div>
-            <div class="slide" id="slide3">
-                Wanna try ?
-            </div>
+        <div class="slide" id="slide1">
+            Hurry Up! What are you waiting for
+        </div>
+        <div class="slide" id="slide2">
+            Many exiting opportunities for you
+        </div>
+        <div class="slide" id="slide3">
+            Wanna try ?
+        </div>
         </div>
     </div>
     <br />

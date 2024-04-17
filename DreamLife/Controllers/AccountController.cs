@@ -21,54 +21,28 @@ namespace DreamLife.Controllers
         {
             return View();
         }
-        //[HttpPost]
-        //public IActionResult Login(UserViewModel model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        User user = new User();
-        //        var name = new UserViewModel
-        //        {
-        //            Name = model.Name,
-        //            Password = model.Password
-        //        };
-        //        _context.SaveChanges();
-        //        if (user.Role == "Admin")
-        //        {
-        //            return RedirectToAction("Dashboard", "Admin");
-        //        }
-        //        else
-        //        {
-        //            return RedirectToAction("Dashboard", "User");
-        //        }
-        //    }
 
-        //    return View(model);
-        //}
         [HttpPost]
         public IActionResult Login(UserViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var user = _context.Users.FirstOrDefault(u => u.Name == model.Name && u.Password == model.Password);
+                var user = _context.Users.FirstOrDefault(u => u.UserName == model.Name && u.Password == model.Password);
 
                 if (user != null)
                 {
-                    return RedirectToAction("Dashboard", "User");
-                }
-                else
-                {
-                    var admin = _context.Admin.FirstOrDefault(u => u.Name == model.Name && u.Password == model.Password);
-
-                    if (admin != null)
+                    if (user.Role == "Admin")
                     {
                         return RedirectToAction("Dashboard", "Admin");
                     }
                     else
                     {
-                        ModelState.AddModelError(string.Empty, "Invalid username or password");
-                        return View(model);
+                        return RedirectToAction("Dashboard", "User");
                     }
+                }
+                else
+                {
+                    ViewBag.IsFailed = true; ;
                 }
             }
             return View(model);
@@ -83,23 +57,22 @@ namespace DreamLife.Controllers
         {
             if (ModelState.IsValid)
             {
-                var registration = new RegistrationViewModel
+                var registration = new Registration
                 {
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     Gender = model.Gender,
-                    DateofBirth = model.DateofBirth,
+                    DateOfBirth = model.DateofBirth,
                     Email = model.Email,
-                    Password = model.Password,
                     Country = model.Country,
                     Phone = model.Phone,
-                    City = model.City
+                    City = model.City,
+                    Address = string.Empty
                 };
 
                 _context.Registrations.Add(registration);
                 _context.SaveChanges();
-
-                return RedirectToAction("Index", "Home");
+                ViewBag.IsSuccess = true;
             }
             return View(model);
         }
@@ -108,13 +81,9 @@ namespace DreamLife.Controllers
             return View();
         }
 
-        public IActionResult Profile()
+        public IActionResult Logout()
         {
-            // Retrieve registration data from the database
-            List<RegistrationViewModel> registrations = _context.Registrations.ToList();
-
-            // Pass the list of registrations to the view
-            return View(registrations);
+            return RedirectToAction("Index", "Home");
         }
     }
 }

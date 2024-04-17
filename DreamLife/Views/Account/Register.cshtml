@@ -101,6 +101,10 @@
         <div class="container1">
             <form method="post" class="form">
                 <h3 class="heading">Register</h3>
+                @if (ViewBag.IsSuccess != null && ViewBag.IsSuccess == true)
+                {
+                    <div><strong>Congratulations! </strong>Successfully registered...</div>
+                }
                 <div style="display: flex; justify-content: space-between;">
                     <div style="width: 48%;">
                         <label asp-for="FirstName" placeholder="Name">First Name:</label>
@@ -132,28 +136,23 @@
                         <span asp-validation-for="Email"></span>
                     </div>
                     <div style="width: 48%;">
-                        <label asp-for="Password">Password:</label>
-                        <input asp-for="Password" class="input" />
-                        <span asp-validation-for="Password"></span>
-                    </div>
-                </div>
-                <div style="display: flex; justify-content: space-between;">
-                    <div style="width: 48%;">
                         <label asp-for="Phone">Phone:</label>
                         <input asp-for="Phone" class="input" />
                         <span asp-validation-for="Phone"></span>
                     </div>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
                     <div style="width: 48%;">
                         <label asp-for="City">City:</label>
                         <input asp-for="City" class="input" />
                         <span asp-validation-for="City"></span>
                     </div>
-                </div>
-                <div>
-                    <label asp-for="Country">Country:</label>
-                    <input asp-for="Country" class="input" />
-                    <span asp-validation-for="Country"></span>
-                </div>
+                    <div style="width: 48%;">
+                        <label asp-for="Country">Country:</label>
+                        <input asp-for="Country" class="input" />
+                        <span asp-validation-for="Country"></span>
+                    </div>
+                </div>                
                 <button type="submit" class="login-button">Register</button>
             </form>
         </div>

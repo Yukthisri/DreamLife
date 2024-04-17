@@ -130,6 +130,10 @@
 
             <form method="post" class="form">
                 <h3 class="heading">Login</h3>
+                @if (ViewBag.IsFailed != null && ViewBag.IsFailed == true)
+                {
+                    <div><strong>Sorry! </strong>Invalid Username or password...</div>
+                }
                 @* <div asp-validation-summary="All" class="text-danger"></div> *@
                 <div>
                     <input asp-for="Name" class="input" placeholder="User Name" />

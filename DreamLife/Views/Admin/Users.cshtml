@@ -1,0 +1,77 @@
+﻿@model List<DreamLife.Models.User>
+@{
+    Layout = "_LayoutAd";
+    var i = 1;
+}
+
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #13c1ad;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #ddd;
+    }
+
+    .bt {
+        background: #ff5722;
+        border-radius:20px;
+        border:0;
+    }
+
+    .bt:hover {
+        background: #f73f04;
+    }
+</style>
+<div style="overflow:auto">
+    <h2>Members List</h2>
+    <table>
+        <tr>
+            <th>S.No</th>
+            <th>UserId</th>
+            <th>Password</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+            <th>Date of Birth</th>
+            <th>Email</th>
+            <th>Country</th>
+            <th>Phone</th>
+            <th>City</th>
+        </tr>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@i</td>
+                <td>@user.UserName</td>
+                <td>@user.Password</td>
+                <td>@user.FirstName</td>
+                <td>@user.LastName</td>
+                <td>@user.Gender</td>
+                <td>@user.DateOfBirth</td>
+                <td>@user.Email</td>
+                <td>@user.Country</td>
+                <td>@user.Phone</td>
+                <td>@user.City</td>
+            </tr>
+            i++;
+        }
+    </table>
+</div>

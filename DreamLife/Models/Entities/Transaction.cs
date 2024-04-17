@@ -2,7 +2,7 @@
 
 namespace DreamLife.Models
 {
-    public class Investment
+    public class Transaction
     {
         [Key]
         public int Id { get; set; }

@@ -110,7 +110,11 @@ namespace DreamLife.Controllers
 
         public IActionResult Profile()
         {
-            return View();
+            // Retrieve registration data from the database
+            List<RegistrationViewModel> registrations = _context.Registrations.ToList();
+
+            // Pass the list of registrations to the view
+            return View(registrations);
         }
     }
 }

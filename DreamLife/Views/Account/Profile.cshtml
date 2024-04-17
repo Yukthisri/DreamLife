@@ -1,4 +1,4 @@
-﻿@model DreamLife.Models.RegistrationViewModel
+﻿@model List<DreamLife.Models.RegistrationViewModel> // Assuming RegistrationViewModel is a model representing a single registration
 
 <!DOCTYPE html>
 <html>
@@ -38,18 +38,21 @@
             <th>Phone</th>
             <th>City</th>
         </tr>
-      @*   <tr>
-            <td>@RegisterViewModel.Id</td>
-            <td>@Model.FirstName</td>
-            <td>@Model.LastName</td>
-            <td>@Model.Gender</td>
-            <td>@Model.DateofBirth.ToString("yyyy-MM-dd")</td>
-            <td>@Model.Email</td>
-            <td>@Model.Password</td>
-            <td>@Model.Country</td>
-            <td>@Model.Phone</td>
-            <td>@Model.City</td>
-        </tr> *@
+        @foreach (var registration in Model)
+        {
+            <tr>
+                <td>@registration.Id</td>
+                <td>@registration.FirstName</td>
+                <td>@registration.LastName</td>
+                <td>@registration.Gender</td>
+                <td>@registration.DateofBirth</td>
+                <td>@registration.Email</td>
+                <td>@registration.Password</td>
+                <td>@registration.Country</td>
+                <td>@registration.Phone</td>
+                <td>@registration.City</td>
+            </tr>
+        }
     </table>
 </body>
 </html>

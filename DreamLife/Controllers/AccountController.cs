@@ -10,11 +10,13 @@ namespace DreamLife.Controllers
     {
         private readonly ILogger<AccountController> _logger;
         private readonly ApplicationDbContext _context;
+        private readonly IHttpContextAccessor _httpContext;
 
-        public AccountController(ILogger<AccountController> logger, ApplicationDbContext context)
+        public AccountController(ILogger<AccountController> logger, ApplicationDbContext context, IHttpContextAccessor httpContext)
         {
             _logger = logger;
             _context = context;
+            _httpContext = httpContext;
         }
 
         public IActionResult Login()
@@ -31,6 +33,8 @@ namespace DreamLife.Controllers
 
                 if (user != null)
                 {
+                    var name = user.UserName;
+                    _httpContext.HttpContext.Session.SetString("LOGINID",name);
                     if (user.Role == "Admin")
                     {
                         return RedirectToAction("Dashboard", "Admin");

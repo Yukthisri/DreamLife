@@ -1,5 +1,6 @@
 ﻿using DreamLife.Data;
 using DreamLife.Models;
+using DreamLife.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,7 +18,29 @@ namespace DreamLife.Controllers
         }
         public IActionResult Dashboard()
         {
-            return View();
+            decimal totalAmount = 0;
+            decimal rOIAmount = 0;
+            decimal levelAmount = 0;
+            decimal referalAmount = 0;
+            AdminDashboard dashboard = new AdminDashboard();
+            var trans = _context.Transactions.ToList();
+            if (trans.Count > 0)
+            {
+                totalAmount = trans.Select(x => Convert.ToDecimal(x.Amount)).Sum();
+                rOIAmount = trans.Select(x => Convert.ToDecimal(x.Amount)).Sum();
+                levelAmount = trans.Select(x => Convert.ToDecimal(x.Amount)).Sum();
+                referalAmount = trans.Select(x => Convert.ToDecimal(x.Amount)).Sum();
+            }
+
+            dashboard = new AdminDashboard()
+            {
+                TotalAmount = totalAmount,
+                ROIAmount = rOIAmount,
+                LevelAmount = levelAmount,
+                ReferalAmount = referalAmount
+            };
+
+            return View(dashboard);
         }
 
         public IActionResult Registrations()

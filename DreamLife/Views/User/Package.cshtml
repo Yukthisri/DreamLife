@@ -1,11 +1,24 @@
 ﻿@model DreamLife.Models.PackageViewModel
 
 <style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+
     table {
         font-family: Arial, sans-serif;
         border-collapse: collapse;
         width: 100%;
-        border-width:0;
+        border-width: 0;
     }
 
     th, td {
@@ -18,24 +31,68 @@
     }
 
     tr {
-        border-radius:10px;
+        border-radius: 10px;
     }
 
-    tr:hover {
-        background-color: #ddd;
+        tr:hover {
+            background-color: #ddd;
+        }
+
+    /* Added styles for form alignment */
+    .form {
+        display: flex;
+        flex-direction: column;
+        border: 2px solid #ccc;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        margin-top: 20px; 
     }
+
+        .form div {
+            display: flex;
+            flex-direction: column; 
+            margin-bottom: 10px;
+        }
+
+            .form div label {
+                margin-bottom: 5px; 
+            }
+
+            .form div input {
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                padding: 8px;
+            }
+
+            .form div span {
+                color: red;
+            }
+
+    .login-button {
+        align-self: flex-start;
+        width: auto;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #4CAF50;
+        color: white;
+        cursor: pointer;
+    }
+
+        .login-button:hover {
+            background-color: #45a049;
+        }
 </style>
-<div>    
-    <div style="display: flex; justify-content: space-between;">
-        <form method="post" class="form">
-            <h3>Buy Package</h3>
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div>
-                <label asp-for="Amount" placeholder="Name">Package Amount:</label>
-                <input asp-for="Amount" class="input" />
-                <span asp-validation-for="Amount"></span>
-            </div>
-            <button type="submit" class="login-button">Buy</button>
-        </form>
-    </div>
+<div class="container">
+    <form method="post" class="form">
+        <h3>Buy Package</h3>
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div>
+            <label asp-for="Amount">Package Amount:</label>
+            <input asp-for="Amount" class="input" />
+            <span asp-validation-for="Amount"></span>
+        </div>
+        <button type="submit" class="login-button">Buy</button>
+    </form>
 </div>

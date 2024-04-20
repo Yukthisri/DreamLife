@@ -1,0 +1,96 @@
+﻿@model DreamLife.Models.MemberViewModel
+
+<style>
+    table {
+        font-family: Arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        border-width:0;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr {
+        border-radius:10px;
+    }
+
+    tr:hover {
+        background-color: #ddd;
+    }
+</style>
+<div>    
+    <div style="display: flex; justify-content: space-between;">
+        <form method="post" class="form">
+            <h3>Add Member</h3>
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div>
+                <div>
+                    <label asp-for="FirstName" placeholder="Name">First Name:</label>
+                    <input asp-for="FirstName" class="input" />
+                    <span asp-validation-for="FirstName"></span>
+                </div>
+                <div>
+                    <label asp-for="LastName">Last Name:</label>
+                    <input asp-for="LastName" class="input" />
+                    <span asp-validation-for="LastName"></span>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <label asp-for="Gender">Gender:</label>
+                    <input asp-for="Gender" class="input" />
+                    <span asp-validation-for="Gender"></span>
+                </div>
+                <div>
+                    <label asp-for="DateOfBirth">Date of Birth:</label>
+                    <input asp-for="DateOfBirth" class="input" />
+                    <span asp-validation-for="DateOfBirth"></span>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <label asp-for="Email">Email:</label>
+                    <input asp-for="Email" class="input" />
+                    <span asp-validation-for="Email"></span>
+                </div>
+                <div>
+                    <label asp-for="Phone">Phone:</label>
+                    <input asp-for="Phone" class="input" />
+                    <span asp-validation-for="Phone"></span>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <label asp-for="City">City:</label>
+                    <input asp-for="City" class="input" />
+                    <span asp-validation-for="City"></span>
+                </div>
+                <div>
+                    <label asp-for="Country">Country:</label>
+                    <input asp-for="Country" class="input" />
+                    <span asp-validation-for="Country"></span>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <label asp-for="Address">Address:</label>
+                    <input asp-for="Address" class="input" />
+                    <span asp-validation-for="Address"></span>
+                </div>
+                <div>
+                    <label asp-for="Position">Position:</label>
+                    <input asp-for="Position" class="input" />
+                    <span asp-validation-for="Position"></span>
+                </div>
+            </div>
+            <button type="submit" class="login-button">ADD</button>
+        </form>
+    </div>
+</div>

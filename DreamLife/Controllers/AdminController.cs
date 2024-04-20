@@ -10,11 +10,13 @@ namespace DreamLife.Controllers
     {
         private readonly ILogger<AdminController> _logger;
         private readonly ApplicationDbContext _context;
+        private readonly IHttpContextAccessor _httpContext;
 
-        public AdminController(ILogger<AdminController> logger, ApplicationDbContext context)
+        public AdminController(ILogger<AdminController> logger, ApplicationDbContext context, IHttpContextAccessor httpContext)
         {
             _logger = logger;
             _context = context;
+            _httpContext = httpContext;
         }
         public IActionResult Dashboard()
         {
@@ -23,24 +25,32 @@ namespace DreamLife.Controllers
             decimal levelAmount = 0;
             decimal referalAmount = 0;
             AdminDashboard dashboard = new AdminDashboard();
-            var trans = _context.Transactions.ToList();
-            if (trans.Count > 0)
+            var login = _httpContext.HttpContext.Session.GetString("LOGINID");
+            if (!string.IsNullOrEmpty(login))
             {
-                totalAmount = trans.Select(x => Convert.ToDecimal(x.Amount)).Sum();
-                rOIAmount = trans.Select(x => Convert.ToDecimal(x.Amount)).Sum();
-                levelAmount = trans.Select(x => Convert.ToDecimal(x.Amount)).Sum();
-                referalAmount = trans.Select(x => Convert.ToDecimal(x.Amount)).Sum();
+                var trans = _context.Transactions.ToList();
+                if (trans.Count > 0)
+                {
+                    totalAmount = trans.Select(x => Convert.ToDecimal(x.Amount)).Sum();
+                    rOIAmount = trans.Select(x => Convert.ToDecimal(x.Amount)).Sum();
+                    levelAmount = trans.Select(x => Convert.ToDecimal(x.Amount)).Sum();
+                    referalAmount = trans.Select(x => Convert.ToDecimal(x.Amount)).Sum();
+                }
+
+                dashboard = new AdminDashboard()
+                {
+                    TotalAmount = totalAmount,
+                    ROIAmount = rOIAmount,
+                    LevelAmount = levelAmount,
+                    ReferalAmount = referalAmount
+                };
+
+                return View(dashboard);
             }
-
-            dashboard = new AdminDashboard()
+            else
             {
-                TotalAmount = totalAmount,
-                ROIAmount = rOIAmount,
-                LevelAmount = levelAmount,
-                ReferalAmount = referalAmount
-            };
-
-            return View(dashboard);
+                return RedirectToAction("Login", "Account");
+            }
         }
 
         public IActionResult Registrations()

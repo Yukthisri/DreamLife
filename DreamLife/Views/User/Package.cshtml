@@ -1,4 +1,4 @@
-﻿@model DreamLife.Models.Transaction
+﻿@model DreamLife.Models.PackageViewModel
 
 <style>
     table {
@@ -25,14 +25,17 @@
         background-color: #ddd;
     }
 </style>
-<div>
-    <h3>Buy Package</h3>
+<div>    
     <div style="display: flex; justify-content: space-between;">
-        <div style="width: 48%;">
-            <label asp-for="Amount" placeholder="Name">Amount:</label>
-            <input asp-for="Amount" class="input" />
-            <span asp-validation-for="Amount"></span>
-        </div>
-        <button type="submit" class="login-button">Buy</button>
+        <form method="post" class="form">
+            <h3>Buy Package</h3>
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div>
+                <label asp-for="Amount" placeholder="Name">Package Amount:</label>
+                <input asp-for="Amount" class="input" />
+                <span asp-validation-for="Amount"></span>
+            </div>
+            <button type="submit" class="login-button">Buy</button>
+        </form>
     </div>
 </div>

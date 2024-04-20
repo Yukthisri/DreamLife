@@ -29,12 +29,14 @@ namespace DreamLife.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = _context.Users.FirstOrDefault(u => u.UserName == model.Name && u.Password == model.Password);
+                var user = _context.Users.Where(u => u.UserName == model.Name && u.Password == model.Password).FirstOrDefault();
+                var member = _context.MemberLevels.Where(u => u.UserId == model.Name).FirstOrDefault();
 
-                if (user != null)
+                if (user != null && member != null)
                 {
                     var name = user.UserName;
                     _httpContext.HttpContext.Session.SetString("LOGINID",name);
+                    _httpContext.HttpContext.Session.SetString("LevelID", member.LevelId);
                     if (user.Role == "Admin")
                     {
                         return RedirectToAction("Dashboard", "Admin");

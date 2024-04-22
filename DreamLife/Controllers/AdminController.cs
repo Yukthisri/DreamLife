@@ -55,6 +55,8 @@ namespace DreamLife.Controllers
 
         public IActionResult Registrations()
         {
+            string userId = _httpContext.HttpContext.Session.GetString("LOGINID");
+            if (string.IsNullOrEmpty(userId)) { return RedirectToAction("Login", "Account"); }
             List<Registration> registrations = _context.Registrations.ToList();
 
             return View(registrations);
@@ -62,6 +64,8 @@ namespace DreamLife.Controllers
 
         public IActionResult Users()
         {
+            string userId = _httpContext.HttpContext.Session.GetString("LOGINID");
+            if (string.IsNullOrEmpty(userId)) { return RedirectToAction("Login", "Account"); }
             List<User> users = _context.Users.ToList();
 
             return View(users);
@@ -69,6 +73,8 @@ namespace DreamLife.Controllers
 
         public IActionResult Transactions()
         {
+            string userId = _httpContext.HttpContext.Session.GetString("LOGINID");
+            if (string.IsNullOrEmpty(userId)) { return RedirectToAction("Login", "Account"); }
             List<Transaction> transactions = _context.Transactions.ToList();
 
             return View(transactions);

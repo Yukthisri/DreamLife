@@ -1,4 +1,5 @@
-﻿using DreamLife.Data;
+﻿using Azure.Core.GeoJson;
+using DreamLife.Data;
 using DreamLife.Models;
 using DreamLife.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -54,8 +55,9 @@ namespace DreamLife.Controllers
 
         public IActionResult Profile()
         {
-            var userName = _httpContext.HttpContext.Session.GetString("LOGINID");
-            var user = _context.Users.FirstOrDefault(u => u.UserName == userName);
+            var userId = _httpContext.HttpContext.Session.GetString("LOGINID");
+            if (string.IsNullOrEmpty(userId)) { return RedirectToAction("Login", "Account"); }
+            var user = _context.Users.FirstOrDefault(u => u.UserName == userId);
 
             return View(user);
         }
@@ -71,7 +73,8 @@ namespace DreamLife.Controllers
             if (ModelState.IsValid)
             {
                 var userId = _httpContext.HttpContext.Session.GetString("LOGINID");
-                Transaction transaction = new Transaction {
+                if (string.IsNullOrEmpty(userId)) { return RedirectToAction("Login", "Account"); }
+                    Transaction transaction = new Transaction {
                     UserName = userId,
                     Amount = model.Amount.ToString(),
                     UpdatedDate = DateTime.Now
@@ -87,8 +90,9 @@ namespace DreamLife.Controllers
 
         public IActionResult PackageHistory()
         {
-            var userName = _httpContext.HttpContext.Session.GetString("LOGINID");
-            var transactions = _context.Transactions.Where(x => x.UserName == userName).ToList();
+            var userId = _httpContext.HttpContext.Session.GetString("LOGINID");
+            if (string.IsNullOrEmpty(userId)) { return RedirectToAction("Login", "Account"); }
+            var transactions = _context.Transactions.Where(x => x.UserName == userId).ToList();
             return View(transactions);
         }
 
@@ -103,6 +107,7 @@ namespace DreamLife.Controllers
             if (ModelState.IsValid)
             {
                 string userId = _httpContext.HttpContext.Session.GetString("LOGINID");
+                if (string.IsNullOrEmpty(userId)) { return RedirectToAction("Login", "Account"); }
                 string levelId = _httpContext.HttpContext.Session.GetString("LevelID");
                 string childLevelId;
                 string newLevelId;
@@ -166,6 +171,26 @@ namespace DreamLife.Controllers
                 ModelState.AddModelError(string.Empty, "Member Successfully Added...");
             }
             return View(model);
+        }
+
+        public IActionResult Network()
+        {
+            var userId = _httpContext.HttpContext.Session.GetString("LOGINID");
+            if (string.IsNullOrEmpty(userId)) { return RedirectToAction("Login", "Account"); }
+            string levelId = _httpContext.HttpContext.Session.GetString("LevelID");
+            var newMemberLevels = _context.MemberLevels.Where(x => x.LevelId.Contains(levelId)).ToList();
+            ViewBag.UserId = userId;
+            if (newMemberLevels.Any())
+            {
+                ViewBag.Left = newMemberLevels.Where(x => x.LevelId.Contains(levelId + 1)).Count();
+                ViewBag.Right = newMemberLevels.Where(x => x.LevelId.Contains(levelId + 2)).Count();
+            }
+            else
+            {
+                ViewBag.Left = 0;
+                ViewBag.Right = 0;
+            }
+            return View();
         }
 
         private string GenerateUserId()

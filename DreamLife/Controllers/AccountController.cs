@@ -30,25 +30,35 @@ namespace DreamLife.Controllers
             if (ModelState.IsValid)
             {
                 var user = _context.Users.Where(u => u.UserName == model.Name && u.Password == model.Password).FirstOrDefault();
-                var member = _context.MemberLevels.Where(u => u.UserId == model.Name).FirstOrDefault();
 
-                if (user != null && member != null)
-                {
-                    var name = user.UserName;
-                    _httpContext.HttpContext.Session.SetString("LOGINID",name);
-                    _httpContext.HttpContext.Session.SetString("LevelID", member.LevelId);
+                if (user != null)
+                {                    
+                    _httpContext.HttpContext.Session.SetString("LOGINID", user.UserName);
                     if (user.Role == "Admin")
                     {
                         return RedirectToAction("Dashboard", "Admin");
                     }
-                    else
+                    else if(user.Role == "User")
                     {
-                        return RedirectToAction("Dashboard", "User");
+                        var member = _context.MemberLevels.Where(u => u.UserId == model.Name).FirstOrDefault();
+                        if (member != null)
+                        {
+                            _httpContext.HttpContext.Session.SetString("LevelID", member.LevelId);
+                            return RedirectToAction("Dashboard", "User");
+                        }
+                        else
+                        {
+                            ViewBag.IsFailed = true;
+                        }
+                    }
+                    else 
+                    {
+                        ViewBag.IsFailed = true;
                     }
                 }
                 else
                 {
-                    ViewBag.IsFailed = true; ;
+                    ViewBag.IsFailed = true;
                 }
             }
             return View(model);
@@ -89,7 +99,8 @@ namespace DreamLife.Controllers
 
         public IActionResult Logout()
         {
-            return RedirectToAction("Index", "Home");
+            _httpContext.HttpContext.Session.Clear();
+            return RedirectToAction("Login", "Account");
         }
     }
 }

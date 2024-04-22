@@ -1,0 +1,31 @@
+﻿
+<style>
+    .avatar{
+        cursor: pointer;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    .avatar img{
+        width:60px;
+        border-radius:50%;
+        margin-bottom:10px;
+    }
+</style>
+<div class="row">
+    <div style="width: auto;margin: auto;border: 3px solid;padding: 50px;border-radius: 20pxborder-color: aquamarine;">
+        <h3 style="margin-bottom: 30px;">Network Downline</h3>
+        <div style="text-align: center; display: flex;justify-content: space-evenly;margin-bottom: 20px;color:red">
+            <span>LeftLine: @ViewBag.Left</span>
+            <span>RightLine: @ViewBag.Right</span>
+        </div>
+        <div class="avatar">
+            <img src="~/images/profile1.jpg" title="@ViewBag.UserId" />
+        </div>
+        <div class="avatar">
+            <img src="~/images/profile1.jpg" /><span style="width:60px;"></span>
+            <img src="~/images/profile1.jpg" />
+        </div>
+    </div>
+</div>

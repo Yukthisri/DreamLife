@@ -73,5 +73,39 @@ namespace DreamLife.Controllers
 
             return View(transactions);
         }
+
+        public IActionResult Holidays()
+        {
+            var holidays = _context.Holidays.ToList();
+
+            var holidayViewModels = holidays.Select(holiday => new HolidaysViewModel
+            {
+                Id = holiday.Id,
+                Name = holiday.Name,
+                HolidayDate = holiday.HolidayDate,
+                UpdatedDate = holiday.UpdatedDate
+            }).ToList();
+
+            return View(holidayViewModels);
+        }
+
+        [HttpGet]
+        public IActionResult CreateHoliday()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreateHoliday(HolidaysViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Holidays.Add(model);
+                _context.SaveChanges();
+
+                return RedirectToAction("Holidays", "Admin");
+            }
+            return View(model);
+        }
     }
 }

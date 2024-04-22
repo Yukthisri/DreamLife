@@ -1,0 +1,38 @@
+﻿@model DreamLife.Models.HolidaysViewModel
+
+<form method="post">
+    <div class="container mt-4">
+        <h2 class="text-primary mb-4">Create Holiday</h2>
+        <div asp-validation-summary="ModelOnly" class="mb-4"></div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <label asp-for="HolidayDate" class="form-label"></label>
+                <input asp-for="HolidayDate" type="date" class="form-control" />
+                <span asp-validation-for="HolidayDate" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <label asp-for="UpdatedDate" class="form-label"></label>
+                <input asp-for="UpdatedDate" type="date" class="form-control" />
+                <span asp-validation-for="UpdatedDate" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+        </div>
+    </div>
+</form>

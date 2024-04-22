@@ -15,5 +15,7 @@ namespace DreamLife.Data
         public DbSet<MemberLevel> MemberLevels { get; set; }
 
         public DbSet<Transaction> Transactions { get; set; }
+
+        public DbSet<HolidaysViewModel> Holidays { get; set; }
     }
 }

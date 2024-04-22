@@ -29,7 +29,8 @@ namespace DreamLife.Controllers
             if (!string.IsNullOrEmpty(login))
             {
                 var trans = _context.Transactions.Where(x => x.UserName == login).ToList();
-                if (trans.Count > 0) {
+                if (trans.Count > 0)
+                {
                     totalAmount = trans.Select(x => Convert.ToDecimal(x.Amount)).Sum();
                     rOIAmount = trans.Select(x => Convert.ToDecimal(x.Amount)).Sum();
                     levelAmount = trans.Select(x => Convert.ToDecimal(x.Amount)).Sum();
@@ -71,7 +72,8 @@ namespace DreamLife.Controllers
             if (ModelState.IsValid)
             {
                 var userId = _httpContext.HttpContext.Session.GetString("LOGINID");
-                Transaction transaction = new Transaction {
+                Transaction transaction = new Transaction
+                {
                     UserName = userId,
                     Amount = model.Amount.ToString(),
                     UpdatedDate = DateTime.Now
@@ -122,7 +124,8 @@ namespace DreamLife.Controllers
                 }
                 else
                 {
-                    if (members == 0) {
+                    if (members == 0)
+                    {
                         newLevelId = model.Position == "Left" ? (levelId + 1) : (levelId + 2);
                         newPosition = model.Position;
                     }
@@ -134,9 +137,10 @@ namespace DreamLife.Controllers
                     newParentId = userId;
                 }
                 newUserId = GenerateUserId();
-                User user = new User {
+                User user = new User
+                {
                     UserName = newUserId,
-                    Password="Abc@123",
+                    Password = "Abc@123",
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     Role = "User",
@@ -153,10 +157,11 @@ namespace DreamLife.Controllers
                 _context.Users.Add(user);
                 _context.SaveChanges();
 
-                MemberLevel memberLevel = new MemberLevel {
+                MemberLevel memberLevel = new MemberLevel
+                {
                     UserId = newUserId,
                     LevelId = newLevelId,
-                    ParentId= newParentId,
+                    ParentId = newParentId,
                     GrandParentId = userId,
                     Position = newPosition,
                     UpdatedDate = DateTime.Now
@@ -175,11 +180,26 @@ namespace DreamLife.Controllers
             if (!string.IsNullOrEmpty(userId))
             {
                 var lastId = _context.Users.Select(x => x.UserName).OrderByDescending(x => x).FirstOrDefault();
-                if (!string.IsNullOrEmpty(lastId)){
+                if (!string.IsNullOrEmpty(lastId))
+                {
                     newId = "DL" + (Convert.ToInt32(lastId.Substring(2)) + 1);
                 }
             }
             return newId;
-        } 
+        }
+        public IActionResult Holidays()
+        {
+            var holidays = _context.Holidays.ToList();
+
+            var holidayViewModels = holidays.Select(holiday => new HolidaysViewModel
+            {
+                Id = holiday.Id,
+                Name = holiday.Name,
+                HolidayDate = holiday.HolidayDate,
+                UpdatedDate = holiday.UpdatedDate
+            }).ToList();
+
+            return View(holidayViewModels);
+        }
     }
 }

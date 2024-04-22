@@ -1,0 +1,56 @@
+﻿@model List<DreamLife.Models.HolidaysViewModel>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Holidays Information</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .create-button {
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h2>Holidays Information</h2>
+    <div class="col-6 ">
+        <a asp-controller="Admin" asp-action="CreateHoliday" class="btn btn-primary">
+             Create New Holiday
+        </a>
+    </div>
+    <br />
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Holiday Name</th>
+            <th>Holiday Date</th>
+            <th>Last Updated</th>
+        </tr>
+        @foreach (var holiday in Model)
+        {
+            <tr>
+                <td>@holiday.Id</td>
+                <td>@holiday.Name</td>
+                <td>@holiday.HolidayDate.ToString("yyyy-MM-dd")</td>
+                <td>@holiday.UpdatedDate.ToString("yyyy-MM-dd")</td>
+            </tr>
+        }
+    </table>
+</body>
+</html>

@@ -145,8 +145,7 @@ namespace DreamLife.Controllers
                 {
                     UserName = newUserId,
                     Password = "Abc@123",
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
+                    FullName = model.FullName,
                     Role = "User",
                     Gender = model.Gender,
                     DateOfBirth = model.DateOfBirth,

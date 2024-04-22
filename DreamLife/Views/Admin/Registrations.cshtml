@@ -1,4 +1,4 @@
-﻿@model List<DreamLife.Models.Registration>
+﻿@model List<DreamLife.Models.Entities.Registration>
 @{
     Layout = "_LayoutAd";
 }
@@ -44,8 +44,7 @@
     <table>
         <tr>
             <th>ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
+            <th>Name</th>
             <th>Gender</th>
             <th>Date of Birth</th>
             <th>Email</th>
@@ -58,8 +57,7 @@
         {
             <tr>
                 <td>@registration.Id</td>
-                <td>@registration.FirstName</td>
-                <td>@registration.LastName</td>
+                <td>@registration.FullName</td>
                 <td>@registration.Gender</td>
                 <td>@registration.DateOfBirth</td>
                 <td>@registration.Email</td>

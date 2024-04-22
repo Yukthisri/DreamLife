@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DreamLife.Models
+namespace DreamLife.Models.Entities
 {
     public class MemberLevel
     {

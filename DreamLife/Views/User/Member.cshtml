@@ -85,25 +85,24 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div>
                     <div>
-                        <label asp-for="FirstName" placeholder="Name">First Name:</label>
-                        <input asp-for="FirstName" class="input" />
-                        <span asp-validation-for="FirstName"></span>
-                    </div>
-                    <div>
-                        <label asp-for="LastName">Last Name:</label>
-                        <input asp-for="LastName" class="input" />
-                        <span asp-validation-for="LastName"></span>
+                        <label asp-for="FullName" placeholder="Name">Full Name:</label>
+                        <input asp-for="FullName" class="input" />
+                        <span asp-validation-for="FullName"></span>
                     </div>
                 </div>
                 <div>
                     <div>
                         <label asp-for="Gender">Gender:</label>
-                        <input asp-for="Gender" class="input" />
+                        <select asp-for="Gender" class="form-select">
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
                         <span asp-validation-for="Gender"></span>
                     </div>
                     <div>
                         <label asp-for="DateOfBirth">Date of Birth:</label>
-                        <input asp-for="DateOfBirth" class="input" />
+                        <input asp-for="DateOfBirth" type="date" class="input" />
                         <span asp-validation-for="DateOfBirth"></span>
                     </div>
                 </div>
@@ -139,7 +138,11 @@
                     </div>
                     <div>
                         <label asp-for="Position">Position:</label>
-                        <input asp-for="Position" class="input" />
+                        <select asp-for="Gender" class="form-select">
+                            <option value="">Select Position</option>
+                            <option value="Left">Left</option>
+                            <option value="Right">Right</option>
+                        </select>
                         <span asp-validation-for="Position"></span>
                     </div>
                 </div>

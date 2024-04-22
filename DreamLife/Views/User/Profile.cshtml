@@ -1,4 +1,4 @@
-﻿@model DreamLife.Models.User
+﻿@model DreamLife.Models.Entities.User
 
 <style>
     table {
@@ -30,10 +30,7 @@
     <table>
         <tr>
             <th style="width:35%">FirstName</th>
-            <th>@Model.FirstName</th>
-        </tr>
-            <td>LastName</td>
-            <td>@Model.LastName</td>
+            <th>@Model.FullName</th>
         </tr>
             <th>Gender</th>
             <th>@Model.Gender</th>

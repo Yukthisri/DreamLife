@@ -106,7 +106,14 @@ namespace DreamLife.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Holidays.Add(model);
+                Holiday holiday = new Holiday
+                {
+                    Id=model.Id,
+                    Name = model.Name,
+                    HolidayDate=model.HolidayDate,
+                    UpdatedDate=DateTime.Now
+                };
+                _context.Holidays.Add(holiday);
                 _context.SaveChanges();
 
                 return RedirectToAction("Holidays", "Admin");

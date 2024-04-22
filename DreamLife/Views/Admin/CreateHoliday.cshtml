@@ -1,6 +1,17 @@
 ﻿@model DreamLife.Models.HolidaysViewModel
 
-<form method="post">
+<style>
+    .holiday{
+        width: auto;
+        margin: auto;
+        border: 1px solid;
+        border-radius: 30px;
+        padding: 30px;
+    }
+</style>
+<div class="row">
+    <div class="holiday">
+        <form method="post">
     <div class="container mt-4">
         <h2 class="text-primary mb-4">Create Holiday</h2>
         <div asp-validation-summary="ModelOnly" class="mb-4"></div>
@@ -21,18 +32,12 @@
             </div>
         </div>
 
-        <div class="row mb-3">
-            <div class="col">
-                <label asp-for="UpdatedDate" class="form-label"></label>
-                <input asp-for="UpdatedDate" type="date" class="form-control" />
-                <span asp-validation-for="UpdatedDate" class="text-danger"></span>
-            </div>
-        </div>
-
         <div class="row">
-            <div class="col-6">
+            <div class="col-12 mt-3 text-center">
                 <button type="submit" class="btn btn-primary">Create</button>
             </div>
         </div>
     </div>
 </form>
+    </div>
+</div>

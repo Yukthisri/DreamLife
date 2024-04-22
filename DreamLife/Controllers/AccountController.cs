@@ -1,5 +1,8 @@
 ﻿using DreamLife.Data;
 using DreamLife.Models;
+using DreamLife.Models.Entities;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
@@ -32,7 +35,7 @@ namespace DreamLife.Controllers
                 var user = _context.Users.Where(u => u.UserName == model.Name && u.Password == model.Password).FirstOrDefault();
 
                 if (user != null)
-                {                    
+                {
                     _httpContext.HttpContext.Session.SetString("LOGINID", user.UserName);
                     if (user.Role == "Admin")
                     {
@@ -64,9 +67,10 @@ namespace DreamLife.Controllers
             return View(model);
         }
 
-        public IActionResult Register()
+        [HttpGet]
+        public IActionResult Register(string ReferalCode)
         {
-            return View();
+            return View(new RegistrationViewModel { ReferalCode=ReferalCode});
         }
         [HttpPost]
         public IActionResult Register(RegistrationViewModel model)
@@ -75,8 +79,7 @@ namespace DreamLife.Controllers
             {
                 var registration = new Registration
                 {
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
+                    FullName = model.FullName,
                     Gender = model.Gender,
                     DateOfBirth = model.DateofBirth,
                     Email = model.Email,

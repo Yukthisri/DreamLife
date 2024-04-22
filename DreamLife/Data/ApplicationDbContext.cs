@@ -1,4 +1,4 @@
-﻿using DreamLife.Models;
+﻿using DreamLife.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace DreamLife.Data
@@ -16,6 +16,6 @@ namespace DreamLife.Data
 
         public DbSet<Transaction> Transactions { get; set; }
 
-        public DbSet<HolidaysViewModel> Holidays { get; set; }
+        public DbSet<Holiday> Holidays { get; set; }
     }
 }

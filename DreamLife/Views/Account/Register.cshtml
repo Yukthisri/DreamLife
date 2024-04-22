@@ -93,6 +93,11 @@
                 transform: scale(0.95);
                 box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 15px 10px -10px;
             }
+
+    .form-select {
+        line-height: 2.5;
+        border-radius: 1.25rem;
+    }
 </style>
 
 <div class="row">
@@ -122,13 +127,17 @@
                 </div>
                 <div style="display: flex; justify-content: space-between;">
                     <div style="width: 48%;">
-                        <label asp-for="Gender">Gender:</label>
-                        <input asp-for="Gender" class="input" />
+                        <label asp-for="Gender" class="input-label">Gender:</label>
+                        <select asp-for="Gender" class="form-select">
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
                         <span asp-validation-for="Gender"></span>
                     </div>
                     <div style="width: 48%;">
                         <label asp-for="DateofBirth">Date of Birth:</label>
-                        <input asp-for="DateofBirth" class="input" />
+                        <input asp-for="DateofBirth" type="date" class="input" />
                         <span asp-validation-for="DateofBirth"></span>
                     </div>
                 </div>

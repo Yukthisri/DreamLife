@@ -1,7 +1,7 @@
 ﻿@model DreamLife.Models.HolidaysViewModel
 
 <style>
-    .holiday{
+    .holiday {
         width: auto;
         margin: auto;
         border: 1px solid;
@@ -12,32 +12,41 @@
 <div class="row">
     <div class="holiday">
         <form method="post">
-    <div class="container mt-4">
-        <h2 class="text-primary mb-4">Create Holiday</h2>
-        <div asp-validation-summary="ModelOnly" class="mb-4"></div>
+            <div class="container mt-4">
+                <h2 class="text-primary mb-4">Create Holiday</h2>
+                <div asp-validation-summary="ModelOnly" class="mb-4"></div>
 
-        <div class="row mb-3">
-            <div class="col">
-                <label asp-for="Name" class="form-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-        </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <label asp-for="Name" class="form-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
 
-        <div class="row mb-3">
-            <div class="col">
-                <label asp-for="HolidayDate" class="form-label"></label>
-                <input asp-for="HolidayDate" type="date" class="form-control" />
-                <span asp-validation-for="HolidayDate" class="text-danger"></span>
-            </div>
-        </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <label asp-for="HolidayDate" class="form-label"></label>
+                        <input asp-for="HolidayDate" type="date" class="form-control" />
+                        <span asp-validation-for="HolidayDate" class="text-danger"></span>
+                    </div>
+                </div>
 
-        <div class="row">
-            <div class="col-12 mt-3 text-center">
-                <button type="submit" class="btn btn-primary">Create</button>
+                <div class="row">
+                    <div class="col-12 mt-3 text-center">
+                        <button type="submit" class="btn btn-primary">Create</button>
+                        <a asp-controller="Admin" asp-action="Holidays" class="btn btn-primary" onclick="closeForm()">
+                        Close
+                        </a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</form>
+        </form>
     </div>
 </div>
+
+<script>
+    function closeForm() {
+        document.querySelector('.holiday').style.display = 'none';
+    }
+</script>

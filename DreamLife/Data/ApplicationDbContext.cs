@@ -1,4 +1,5 @@
-﻿using DreamLife.Models.Entities;
+﻿using DreamLife.Models;
+using DreamLife.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace DreamLife.Data

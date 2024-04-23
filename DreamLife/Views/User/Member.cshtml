@@ -58,22 +58,33 @@
         box-sizing: border-box;
     }
 
-    .login-button {
+    .button {
         background-color: #4caf50;
         color: white;
         padding: 10px 20px;
         border: none;
         border-radius: 5px;
         cursor: pointer;
-        margin-left: 117px;
+        margin-top: 10px;
     }
 
-        .login-button:hover {
+        .button:hover {
             background-color: #45a049;
         }
 
     .text-danger {
         color: red;
+    }
+
+    .form-select {
+        margin-left: 125px;
+        margin-top: -31px;
+        width: 58%;
+    }
+    .input{
+        margin-top: 10px;
+        width: 58%;
+        padding: 3px;
     }
 </style>
 
@@ -146,8 +157,16 @@
                         <span asp-validation-for="Position"></span>
                     </div>
                 </div>
-                <button type="submit" class="login-button">ADD</button>
+                <button type="submit" class="button">ADD</button>
+                <a asp-controller="User" asp-action="Dashboard" class="button" onclick="closeForm()">
+                    Close
+                </a>
             </form>
         </div>
     </div>
 </div>
+<script>
+    function closeForm() {
+        document.querySelector('.holiday').style.display = 'none';
+    }
+</script>

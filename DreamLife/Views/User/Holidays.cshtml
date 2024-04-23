@@ -1,58 +1,50 @@
 ﻿@model List<DreamLife.Models.HolidaysViewModel>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Holidays Information</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
 
-        th, td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
 
-        th {
-            background-color: #13c1ad;
-            color: white;
-        }
+    th {
+        background-color: #13c1ad;
+        color: white;
+    }
 
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
 
-        tr:hover {
-            background-color: #ddd;
-        }
+    tr:hover {
+        background-color: #ddd;
+    }
 
-    </style>
-</head>
-<body>
+</style>
 
-    <h2>Holidays Information</h2>
-    
-    <table>
+
+<h2>Holidays Information</h2>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Holiday Name</th>
+        <th>Holiday Date</th>
+        <th>Last Updated</th>
+    </tr>
+    @foreach (var holiday in Model)
+    {
         <tr>
-            <th>ID</th>
-            <th>Holiday Name</th>
-            <th>Holiday Date</th>
-            <th>Last Updated</th>
+            <td>@holiday.Id</td>
+            <td>@holiday.Name</td>
+            <td>@holiday.HolidayDate.ToString("yyyy-MM-dd")</td>
+            <td>@holiday.UpdatedDate.ToString("yyyy-MM-dd")</td>
         </tr>
-        @foreach (var holiday in Model)
-        {
-            <tr>
-                <td>@holiday.Id</td>
-                <td>@holiday.Name</td>
-                <td>@holiday.HolidayDate.ToString("yyyy-MM-dd")</td>
-                <td>@holiday.UpdatedDate.ToString("yyyy-MM-dd")</td>
-            </tr>
-        }
-    </table>
-
-</body>
-</html>
+    }
+</table>

@@ -53,13 +53,14 @@
             border-radius: 10px;
             margin-bottom: -14px;
         }
+        .round{
+            height:50px;
+            width:50px;
+            border-radius: 50px; 
+        }
     </style>
 </head>
 <body>    
-    @if (Accessor.HttpContext.Session.GetString("LOGINID") == null)
-    {
-        
-    }
     <header class="sticky-top">
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white" style="background: linear-gradient(#060231,#0dcec4);">
             <div class="container-fluid">
@@ -69,7 +70,7 @@
                 </button>
                 <a class="navbar-brand" asp-area="" asp-controller="User" asp-action="Dashboard">
                     <img src="~/images/dreamlifelogo.png" />
-                </a>
+                </a>                
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
@@ -90,18 +91,28 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Help</a>
                         </li>
-                    </ul>
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-button text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-profile">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Profile">
-                            <img src="~/images/profile1.jpg" />
-                        </a>
-                    </ul>
+                    </ul>                    
                 </div>
+                <ul class="nav align-items-center">
+                    <span class="d-none d-sm-block"><strong>@Accessor.HttpContext.Session.GetString("LOGINID")</strong></span>
+                    <li class="nav-item dropdown dropdown-user">
+                        <a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @if (Accessor.HttpContext.Session.GetString("Gender") == "Male")
+                            {
+                                <img class="round" src="~/images/male-avatar.jpg" alt="avatar" />
+                            }
+                            else
+                            {
+                                <img class="round" src="~/images/female-avatar.jpg" alt="avatar" />
+                            }
+    
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user" style="background: #0dcec4;">
+                            <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="Profile"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user me-50"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> Profile</a>
+                            <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="Logout"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-power me-50"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg> Logout</a>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </nav>
     </header>

@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor Accessor
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -80,12 +82,26 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Help</a>
                         </li>
                     </ul>
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-button text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
-                        </li>
-                    </ul>
                 </div>
+
+                <ul class="nav align-items-center">
+                    <span class="d-none d-sm-block"><strong>@Accessor.HttpContext.Session.GetString("LOGINID")</strong></span>
+                    <li class="nav-item dropdown dropdown-user">
+                        <a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @if (Accessor.HttpContext.Session.GetString("Gender") == "Male")
+                            {
+                                <img class="round" src="~/images/male-avatar.jpg" alt="avatar" />
+                            }
+                            else
+                            {
+                                <img class="round" src="~/images/female-avatar.jpg" alt="avatar" />
+                            }
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user" style="background: #0dcec4;">
+                            <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="Logout"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-power me-50"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg> Logout</a>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </nav>
     </header>

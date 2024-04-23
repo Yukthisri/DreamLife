@@ -120,5 +120,11 @@ namespace DreamLife.Controllers
             }
             return View(model);
         }
+        public IActionResult Queries()
+        {
+            var queries = _context.Queries.ToList();
+            return View(queries);
+        }
+
     }
 }

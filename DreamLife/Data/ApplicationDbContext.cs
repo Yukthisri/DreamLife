@@ -18,5 +18,7 @@ namespace DreamLife.Data
         public DbSet<Transaction> Transactions { get; set; }
 
         public DbSet<Holiday> Holidays { get; set; }
+
+        public DbSet<Queries> Queries { get; set; }
     }
 }

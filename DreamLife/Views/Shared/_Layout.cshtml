@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor Accessor
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -53,7 +55,11 @@
         }
     </style>
 </head>
-<body>
+<body>    
+    @if (Accessor.HttpContext.Session.GetString("LOGINID") == null)
+    {
+        
+    }
     <header class="sticky-top">
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white" style="background: linear-gradient(#060231,#0dcec4);">
             <div class="container-fluid">
@@ -61,7 +67,7 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a class="navbar-brand" asp-area="" asp-controller="" asp-action="">
+                <a class="navbar-brand" asp-area="" asp-controller="User" asp-action="Dashboard">
                     <img src="~/images/dreamlifelogo.png" />
                 </a>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">

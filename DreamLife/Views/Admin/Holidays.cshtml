@@ -1,67 +1,62 @@
 ﻿@model List<DreamLife.Models.HolidaysViewModel>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Holidays Information</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
+    @{
+        Layout = "_LayoutAd";
+    }
 
-        th, td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
 
-        th {
-            background-color: #13c1ad;
-            color: white;
-        }
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
 
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
+    th {
+        background-color: #13c1ad;
+        color: white;
+    }
 
-        tr:hover {
-            background-color: #ddd;
-        }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #ddd;
+    }
 
 
-        .create-button {
-            margin-bottom: 10px;
-        }
+    .create-button {
+        margin-bottom: 10px;
+    }
 
-    </style>
-</head>
-<body>
-
-    <h2>Holidays Information</h2>
-    <div class="col-6 ">
-        <a asp-controller="Admin" asp-action="CreateHoliday" class="btn btn-primary">
-             Create New Holiday
-        </a>
-    </div>
-    <br />
-    <table>
+</style>
+<h2>Holidays Information</h2>
+<div class="col-6 ">
+    <a asp-controller="Admin" asp-action="CreateHoliday" class="btn btn-primary">
+        Create New Holiday
+    </a>
+</div>
+<br />
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Holiday Name</th>
+        <th>Holiday Date</th>
+        <th>Last Updated</th>
+    </tr>
+    @foreach (var holiday in Model)
+    {
         <tr>
-            <th>ID</th>
-            <th>Holiday Name</th>
-            <th>Holiday Date</th>
-            <th>Last Updated</th>
+            <td>@holiday.Id</td>
+            <td>@holiday.Name</td>
+            <td>@holiday.HolidayDate.ToString("yyyy-MM-dd")</td>
+            <td>@holiday.UpdatedDate.ToString("yyyy-MM-dd")</td>
         </tr>
-        @foreach (var holiday in Model)
-        {
-            <tr>
-                <td>@holiday.Id</td>
-                <td>@holiday.Name</td>
-                <td>@holiday.HolidayDate.ToString("yyyy-MM-dd")</td>
-                <td>@holiday.UpdatedDate.ToString("yyyy-MM-dd")</td>
-            </tr>
-        }
-    </table>
-</body>
-</html>
+    }
+</table>

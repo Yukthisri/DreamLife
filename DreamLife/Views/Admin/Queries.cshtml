@@ -1,0 +1,57 @@
+﻿@model List<DreamLife.Models.Entities.Queries>
+
+@{
+    ViewData["Title"] = "Queries";
+    Layout = "_Layout";
+}
+
+<h1>Queries</h1>
+
+<style>
+    table {
+        width: 100%;
+       
+        margin-bottom: 20px;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    thead {
+        background-color: #13c1ad;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #ddd;
+    }
+</style>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Text</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var query in Model)
+        {
+            <tr>
+                <td>@query.Id</td>
+                <td>@query.Name</td>
+                <td>@query.PhoneNumber</td>
+                <td>@query.Text</td>
+            </tr>
+        }
+    </tbody>
+</table>

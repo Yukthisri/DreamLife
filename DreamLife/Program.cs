@@ -31,6 +31,15 @@ app.UseSession();
 app.UseRouting();
 
 app.UseAuthorization();
+app.Use(async (context, next) =>
+{
+    // Prevent caching for sensitive pages
+    context.Response.Headers["Cache-Control"] = "no-cache, no-store, must-revalidate";
+    context.Response.Headers["Pragma"] = "no-cache";
+    context.Response.Headers["Expires"] = "0";
+
+    await next();
+});
 
 app.MapControllerRoute(
     name: "default",

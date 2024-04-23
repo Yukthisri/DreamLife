@@ -6,11 +6,29 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DreamLife.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class intial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "MemberLevels",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LevelId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ParentId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    GrandParentId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Position = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MemberLevels", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Registrations",
                 columns: table => new
@@ -30,6 +48,21 @@ namespace DreamLife.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Registrations", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Transactions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Amount = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Transactions", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -60,7 +93,13 @@ namespace DreamLife.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "MemberLevels");
+
+            migrationBuilder.DropTable(
                 name: "Registrations");
+
+            migrationBuilder.DropTable(
+                name: "Transactions");
 
             migrationBuilder.DropTable(
                 name: "Users");

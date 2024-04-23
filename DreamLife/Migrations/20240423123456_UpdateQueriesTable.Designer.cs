@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DreamLife.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240417155852_OtherTables")]
-    partial class OtherTables
+    [Migration("20240423123456_UpdateQueriesTable")]
+    partial class UpdateQueriesTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,7 @@ namespace DreamLife.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("DreamLife.Models.MemberLevel", b =>
+            modelBuilder.Entity("DreamLife.Models.Entities.Holiday", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -33,14 +33,49 @@ namespace DreamLife.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Level")
+                    b.Property<DateOnly>("HolidayDate")
+                        .HasColumnType("date");
+
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("UserName")
+                    b.HasKey("Id");
+
+                    b.ToTable("Holidays");
+                });
+
+            modelBuilder.Entity("DreamLife.Models.Entities.MemberLevel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("GrandParentId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LevelId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ParentId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Position")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -49,7 +84,7 @@ namespace DreamLife.Migrations
                     b.ToTable("MemberLevels");
                 });
 
-            modelBuilder.Entity("DreamLife.Models.Registration", b =>
+            modelBuilder.Entity("DreamLife.Models.Entities.Registration", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -76,15 +111,11 @@ namespace DreamLife.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FirstName")
+                    b.Property<string>("FullName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Gender")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -96,7 +127,7 @@ namespace DreamLife.Migrations
                     b.ToTable("Registrations");
                 });
 
-            modelBuilder.Entity("DreamLife.Models.Transaction", b =>
+            modelBuilder.Entity("DreamLife.Models.Entities.Transaction", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -120,7 +151,7 @@ namespace DreamLife.Migrations
                     b.ToTable("Transactions");
                 });
 
-            modelBuilder.Entity("DreamLife.Models.User", b =>
+            modelBuilder.Entity("DreamLife.Models.Entities.User", b =>
                 {
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(450)");
@@ -148,15 +179,11 @@ namespace DreamLife.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FirstName")
+                    b.Property<string>("FullName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Gender")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -175,6 +202,30 @@ namespace DreamLife.Migrations
                     b.HasKey("UserName");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("DreamLife.Models.QueriesViewModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("PhoneNumber")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Queries");
                 });
 #pragma warning restore 612, 618
         }

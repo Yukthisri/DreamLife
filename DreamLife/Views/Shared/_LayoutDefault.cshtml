@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/DreamLife.styles.css" asp-append-version="true" />
     <style>
-        a {
+        .abtn {
             font-weight: bold;
             font-size: large;
         }
 
-            a:hover {
+            .abtn:hover {
                 font-weight: 500;
             }
 
@@ -46,6 +46,44 @@
         .text-dark{
             color: rgb(255 255 255) !important;
         }
+
+        .btnrl {
+            padding: 0.5em 1.0em;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;     
+            background:white;
+        }
+                
+        .label {
+            position: relative;
+            top: -1px;
+            color:black!important;
+            text-decoration:none!important;
+        }
+
+        .transition {
+            transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+            transition-duration: 500ms;
+            background-color: rgba(16, 185, 129, 0.6);
+            border-radius: 9999px;
+            width: 0;
+            height: 0;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .btnrl:hover .transition {
+            width: 14em;
+            height: 14em;
+        }
+
+        .btnrl:active {
+            transform: scale(0.97);
+        }
+
         
     </style>
 </head>
@@ -57,31 +95,37 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a class="navbar-brand" asp-area="" asp-controller="" asp-action="">
+                <a class="navbar-brand abtn" asp-area="" asp-controller="" asp-action="">
                     <img class="img" src="~/images/dreamlifelogo.png" />
                 </a>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark abtn" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Vision">Vision</a>
+                            <a class="nav-link text-dark abtn" asp-area="" asp-controller="Home" asp-action="Vision">Vision</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AboutUs">About Us</a>
+                            <a class="nav-link text-dark abtn" asp-area="" asp-controller="Home" asp-action="AboutUs">About Us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ContactUs">Contact Us</a>
+                            <a class="nav-link text-dark abtn" asp-area="" asp-controller="Home" asp-action="ContactUs">Contact Us</a>
                         </li>
                     </ul>
                 </div>
                 <ul class="nav">
                     <li class="nav-item">
-                        <button style="border-radius: 25px;"><a class="text-dark" asp-area="" asp-controller="Account" asp-action="Register">Register</a></button>
+                        <button class="btnrl" style="border-radius: 25px;" >
+                            <span class="transition"></span>
+                            <a class="label" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                        </button>
                     </li>
                     <li class="nav-item">
-                        <button style="border-radius: 25px;"><a class="text-dark" asp-area="" asp-controller="Account" asp-action="Login">Log In</a></button>
+                        <button class="btnrl" style="border-radius: 25px;" >
+                            <span class="transition"></span>
+                            <a class="label" asp-area="" asp-controller="Account" asp-action="Login">Log In</a>
+                        </button>
                     </li>
                 </ul>
             </div>

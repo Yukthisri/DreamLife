@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Dashboard";
 }
+<link href="~/css/ZoomInOut.css" rel="stylesheet" />
 <style>
     .popup {
         background: linear-gradient(#69ebd9, #11a6b9);
@@ -15,8 +16,14 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         z-index: 9981;
         display: none;
+        margin-top: -155px;
+        margin-left: -185px;
     }
 
+        .popup:hover{
+            margin-top: -10px;
+            margin-left: -10px;
+        }
     .pop {
         width: 300px;
         display: flex;
@@ -24,6 +31,7 @@
         justify-content: center;
         align-items: center;
         text-align: center;
+
     }
 
     #btn {
@@ -60,7 +68,22 @@
         margin-left: 100px;
         margin-bottom: 20px;
     }
-
+    .zoomInOut {
+    animation: zoomInOut 2s infinite alternate;
+}
+         @{
+        string zoomInKeyframes = @"
+            @keyframes zoomIn {
+                from {
+                    transform: scale(1);
+                }
+                to {
+                    transform: scale(1.1);
+                }
+            }
+        ";
+    }
+@Html.Raw(zoomInKeyframes)
 </style>
 
 <div class="row">
@@ -122,7 +145,7 @@
     </div>
 </div>
 
-<div id="popup" class="popup">
+<div id="popup" class="popup zoomInOut">
     <button id="btn">X</button>
     <div class="pop">
         <p>Welcome Investors!</p>
@@ -140,5 +163,15 @@
         $('#btn').click(function () {
             $('#popup').hide();
         });
+
+        // Stop animation on mouse over
+        $('#popup').hover(
+            function () {
+                $(this).removeClass('zoomInOut');
+            },
+            function () {
+                $(this).addClass('zoomInOut');
+            }
+        );
     });
 </script>

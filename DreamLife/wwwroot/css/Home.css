@@ -1,4 +1,27 @@
-﻿@keyframes slideInFromLeft {
+﻿@keyframes blink {
+    0% {
+        width: 0;
+    }
+
+    50% {
+        width: 100%;
+    }
+
+    100% {
+        width: 0;
+    }
+}
+/* Apply the blinking animation to the line */
+.blinking-line {
+    height: 2px;
+    background-color: red;
+    animation: blink 3s infinite;
+    width: auto;
+}
+.heading-container {
+    display: inline-block; /* Ensure container only occupies the width of its content */
+}
+@keyframes slideInFromLeft {
     0%
 
 {
@@ -37,7 +60,6 @@
     font-size: 32px;
     font-weight: bold;
     color: #3c848d;
-    margin-bottom: 20px;
 }
 
 .home-paragraph {
@@ -58,4 +80,3 @@
 .text-hover:hover {
     font-size: 18px;
 }
-

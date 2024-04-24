@@ -58,6 +58,24 @@
             width:50px;
             border-radius: 50px; 
         }
+
+        .dropdown-item:hover{
+            background: #0dcec4;
+        }
+
+        .dropdown-menu{
+            background: #0dcec4;
+        }
+        .text-dark {
+            color: rgb(255 255 255) !important;
+        }
+        .nav-link{
+            color: rgb(255 255 255) !important;
+        }
+
+        .nav-link:hover {
+                color: #0dcec4;
+        }
     </style>
 </head>
 <body>    
@@ -77,8 +95,8 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Dashboard">Dashboard</a>
                         </li>
                         <li class="nav-item dropdown text-dark">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">Buy</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background: #0dcec4;width: fit-content;">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">Buy</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background: white;width: fit-content;">
                                 <li><a class="dropdown-item" asp-area="" asp-controller="User" asp-action="Package">Package</a></li>
                                 <li><a class="dropdown-item" asp-area="" asp-controller="User" asp-action="PackageHistory">Package History</a></li>
                                 <li><a class="dropdown-item" asp-area="" asp-controller="User" asp-action="Member">Add Member</a></li>
@@ -94,7 +112,7 @@
                     </ul>                    
                 </div>
                 <ul class="nav align-items-center">
-                    <span class="d-none d-sm-block"><strong>@Accessor.HttpContext.Session.GetString("LOGINID")</strong></span>
+                    <span class="d-none d-sm-block text-dark"><strong>@Accessor.HttpContext.Session.GetString("LOGINID")</strong></span>
                     <li class="nav-item dropdown dropdown-user">
                         <a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             @if (Accessor.HttpContext.Session.GetString("Gender") == "Male")
@@ -107,7 +125,7 @@
                             }
     
                         </a>
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user" style="background: #0dcec4;">
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user" style="background: white;">
                             <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="Profile"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user me-50"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> Profile</a>
                             <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="Logout"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-power me-50"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg> Logout</a>
                         </div>
@@ -168,6 +186,7 @@
                 $("#slide" + currentSlide).addClass("active");
             }, 3000);
         });
+
     </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

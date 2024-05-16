@@ -1,10 +1,9 @@
 ﻿@model DreamLife.Models.RegistrationViewModel
 
 @{
+    ViewData["Title"] = "Register";
     Layout = "_LayoutDefault";
 }
-
-<h1>@ViewData["Title"]</h1>
 
 <style>
     body {
@@ -117,11 +116,11 @@
                     <div style="width: 48%;">
                         <label asp-for="FullName" placeholder="Name">First Name:</label>
                         <input asp-for="FullName" class="input" />
-                        <span asp-validation-for="FullName"></span>
+                        <span asp-validation-for="FullName" class="text-danger"></span>
                     </div>
                     <div style="width: 48%;">
                         <label asp-for="ReferalCode" placeholder="Referal Code">Referal Code:</label>
-                        <input asp-for="ReferalCode" class="input" />
+                        <input asp-for="ReferalCode" class="input" readonly />
                         <span asp-validation-for="ReferalCode"></span>
                     </div>
                 </div>
@@ -133,36 +132,36 @@
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                         </select>
-                        <span asp-validation-for="Gender"></span>
+                        <span asp-validation-for="Gender" class="text-danger"></span>
                     </div>
                     <div style="width: 48%;">
                         <label asp-for="DateofBirth">Date of Birth:</label>
                         <input asp-for="DateofBirth" type="date" class="input" />
-                        <span asp-validation-for="DateofBirth"></span>
+                        <span asp-validation-for="DateofBirth" class="text-danger"></span>
                     </div>
                 </div>
                 <div style="display: flex; justify-content: space-between;">
                     <div style="width: 48%;">
                         <label asp-for="Email">Email:</label>
                         <input asp-for="Email" class="input" />
-                        <span asp-validation-for="Email"></span>
+                        <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
                     <div style="width: 48%;">
                         <label asp-for="Phone">Phone:</label>
                         <input asp-for="Phone" class="input" />
-                        <span asp-validation-for="Phone"></span>
+                        <span asp-validation-for="Phone" class="text-danger"></span>
                     </div>
                 </div>
                 <div style="display: flex; justify-content: space-between;">
                     <div style="width: 48%;">
                         <label asp-for="City">City:</label>
                         <input asp-for="City" class="input" />
-                        <span asp-validation-for="City"></span>
+                        <span asp-validation-for="City" class="text-danger"></span>
                     </div>
                     <div style="width: 48%;">
                         <label asp-for="Country">Country:</label>
                         <input asp-for="Country" class="input" />
-                        <span asp-validation-for="Country"></span>
+                        <span asp-validation-for="Country" class="text-danger"></span>
                     </div>
                 </div>                
                 <button type="submit" class="login-button">Register</button>

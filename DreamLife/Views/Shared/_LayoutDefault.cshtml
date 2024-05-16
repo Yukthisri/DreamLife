@@ -12,7 +12,6 @@
             font-weight: bold;
             font-size: large;
             /* background: #f4f3ee; */
-
         }
 
             .abtn:hover {
@@ -27,6 +26,7 @@
 
         .navbar-brand img {
             width: 200px;
+            margin-right:20px;
         }
 
         .NotificationPanel {
@@ -34,7 +34,7 @@
             color: white;
             text-align: center;
             display: block;
-           
+
         }
 
         .transition {
@@ -65,16 +65,16 @@
         .active {
             display: block;
         }
-      
+
 
         .btnrl {
             padding: 0.5em 1.0em;
             font-weight: 500;
             position: relative;
-            overflow: hidden;     
+            overflow: hidden;
             background:white;
         }
-                
+
         .label {
             position: relative;
             top: -1px;
@@ -94,11 +94,10 @@
 
         .register-login-buttons {
             position: fixed;
-            top: 10px;
+            top: 20px;
             right: 10px;
-            z-index: 1000; 
+            z-index: 1000;
         }
-
 
     </style>
 </head>
@@ -110,7 +109,7 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a class="navbar-brand" asp-area="" asp-controller="" asp-action="">
+                <a class="navbar-brand mx-auto" asp-area="" asp-controller="" asp-action="">
                     <img class="img" src="~/images/dreamlifelogo.png" />
                 </a>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
@@ -130,20 +129,20 @@
                     </ul>
                 </div>
                 <div class="register-login-buttons">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <button class="btnrl" style="border-radius: 25px;" >
-                            <span class="transition"></span>
-                            <a class="label" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
-                        </button>
-                    </li>
-                    <li class="nav-item">
-                        <button class="btnrl" style="border-radius: 25px;" >
-                            <span class="transition"></span>
-                            <a class="label" asp-area="" asp-controller="Account" asp-action="Login">Log In</a>
-                        </button>
-                    </li>
-                </ul>
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <button class="btnrl" style="border-radius: 25px;">
+                                <span class="transition"></span>
+                                <a class="label" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btnrl" style="border-radius: 25px;">
+                                <span class="transition"></span>
+                                <a class="label" asp-area="" asp-controller="Account" asp-action="Login">Log In</a>
+                            </button>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>

@@ -67,14 +67,20 @@ namespace DreamLife.Controllers
             return View(model);
         }
 
-        [HttpGet]
-        public IActionResult Register(string ReferalCode)
+        public IActionResult Register(string ReferalId)
         {
-            return View(new RegistrationViewModel { ReferalCode=ReferalCode});
+            if (!string.IsNullOrEmpty(ReferalId))
+            {
+                return View(new RegistrationViewModel { ReferalCode = ReferalId });
+            }
+            else
+            {
+                return View();
+            }
         }
         [HttpPost]
         public IActionResult Register(RegistrationViewModel model)
-        {
+        {            
             if (ModelState.IsValid)
             {
                 var registration = new Registration
@@ -84,7 +90,7 @@ namespace DreamLife.Controllers
                     DateOfBirth = model.DateofBirth,
                     Email = model.Email,
                     Country = model.Country,
-                    Phone = model.Phone,
+                    Phone = Convert.ToInt32(model.Phone),
                     City = model.City,
                     Address = string.Empty
                 };

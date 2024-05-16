@@ -1,22 +1,47 @@
 ﻿@model DreamLife.Models.UserViewModel
 
 @{
-    ViewData["Title"] = "Login";
     Layout = "_LayoutDefault";
 }
 
-<style> 
-    body {
-        background: linear-gradient(#060231,#0dcec4);
+<h1>@ViewData["Title"]</h1>
+<style>
+    .background-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%; /* Set height to cover the entire viewport */
+        z-index: -1;
     }
+
+        .background-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    .login-form-container {
+        max-width: 400px;
+        padding: 20px;
+        /* background: linear-gradient(#69ebd9, #11a6b9); */
+        border-radius: 40px;
+        /* border: 5px solid #fff; */
+        box-shadow: 0px 30px 30px -20px rgba(133, 189, 215, 0.878);
+        position: relative;
+        z-index: 1;
+        color: #fff;
+        MARGIN-LEFT: 86px;
+    }
+
     .container1 {
-        background: linear-gradient(#69ebd9, #11a6b9);
         max-width: 400px;
         border-radius: 40px;
         padding: 25px 35px;
-        border: 5px solid rgb(255, 255, 255);
+        /*         border: 5px solid rgb(255, 255, 255); */
+        border: 5px solid green;
         box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 30px 30px -20px;
-        margin: 20px auto;
+        margin: 20px 20px 0 20px;
         margin-bottom: 68px;
     }
 
@@ -25,7 +50,8 @@
         font-family: 'Bradley Hand', cursive;
         font-weight: 600;
         font-size: 25px;
-        color:rgb(227 69 69 / 99%);
+        /* color: rgb(227 69 69 / 99%); */
+        color: yellow;
     }
 
     .form {
@@ -60,14 +86,16 @@
             display: block;
             margin-bottom: 8px;
             font-weight: bold;
-            color: #333;
+            /* color: white; */
+            color: yellow;
         }
 
         .form .login-button {
             display: block;
             width: 40%;
             font-weight: bold;
-            background: linear-gradient(rgb(51, 30, 235),#11b3aa);
+            /* background: linear-gradient(rgb(51, 30, 235), #11b3aa); */
+            background: green;
             color: white;
             padding-block: 15px;
             margin: 20px auto;
@@ -79,7 +107,8 @@
 
             .form .login-button:hover {
                 transform: scale(1.03);
-                background: linear-gradient(#11b3aa,rgb(51, 30, 235));
+                /*    background: linear-gradient(#11b3aa, rgb(51, 30, 235)); */
+                background: linear-gradient(green, yellow);
                 box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 23px 10px -20px;
             }
 
@@ -91,10 +120,10 @@
     .forgot-password {
         display: block;
         margin-top: 3px;
-        margin-right:20px;
+        margin-right: 20px;
         text-decoration: none;
-        color:white;
-        font-size:15px;
+        color: white;
+        font-size: 15px;
     }
 
     .form-check {
@@ -106,45 +135,41 @@
         color: #333;
     }
 
-    .log-image{
-        margin-top:20px;
-       border-radius:5px;
+    .log-image {
+        margin-top: 20px;
+        border-radius: 5px;
     }
-    </style>
-<div class="row">
-
-    <div class="col-md-6">
-        <div class="text-center" style="color:white">
-            <span>Are you New? Register <a asp-area="" asp-controller="Account" asp-action="Register">Here</a></span>
-        </div>
-        <div class="container1">
-
-            <form method="post" class="form">
-                <h3 class="heading">Login</h3>
-                @if (ViewBag.IsFailed != null && ViewBag.IsFailed == true)
-                {
-                    <div><strong>Sorry! </strong>Invalid Username or password...</div>
-                }
-                @* <div asp-validation-summary="All" class="text-danger"></div> *@
-                <div>
-                    <input asp-for="Name" class="input" placeholder="User Name" />
-                    <span asp-validation-for="Name" class="text-danger"></span>
-                </div>
-                <div>
-                    <input asp-for="Password" type="password" class="input" placeholder="Password" />
-                    <span asp-validation-for="Password" class="text-danger"></span>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="rememberMe">
-                    <label class="form-check-label" for="rememberMe">Remember Password</label>
-                </div>
-                <button type="submit" class="login-button">Login</button>
-                <a href="#" class="forgot-password">Forgot Password?</a>
-            </form>
-        </div>
-    </div>
-    <div class="col-md-6 log-image">
-        <img src="~/images/vim1.jpeg" width="500px" height="400px" />
-    </div>
+</style>
+<div class="background-image">
+    <img src="~/images/DreamLife/11.jpg" alt="Background Image">
 </div>
 
+<div class="login-form-container">
+    <div class="text-center" style="color:yellow">
+        <span>Are you New? Register <a asp-area="" asp-controller="Account" asp-action="Register">Here</a></span>
+    </div>
+    <div class="container1">
+
+        <form method="post" class="form">
+            <h3 class="heading">Login</h3>
+            @if (ViewBag.IsFailed != null && ViewBag.IsFailed == true)
+            {
+                <div><strong>Sorry! </strong>Invalid Username or password...</div>
+            }
+            <div>
+                <input asp-for="Name" class="input" placeholder="User Name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div>
+                <input asp-for="Password" type="password" class="input" placeholder="Password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="rememberMe">
+                <label class="form-check-label" for="rememberMe">Remember Password</label>
+            </div>
+            <button type="submit" class="login-button">Login</button>
+            <a href="#" class="forgot-password">Forgot Password?</a>
+        </form>
+    </div>
+</div>

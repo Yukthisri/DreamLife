@@ -1,4 +1,59 @@
-﻿@keyframes blink {
+﻿@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromBottom {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.anim-top {
+    animation: slideInFromTop 1s ease-in-out;
+   
+}
+
+.anim-bottom {
+    animation: slideInFromBottom 1s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background: #ffff;
+}
+
+.anim-bottom {
+    position: relative;
+  /*  border: none;
+    border-radius: 40px 10px;*/
+}
+
+    .anim-bottom ::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 30%; 
+        height: 100%;
+        border-top: 3px outset #016d3a;
+        border-right: 3px inset #016d3a;
+        box-sizing: border-box;
+        border-radius: 10px;
+    }
+
+@keyframes blink {
     0% {
         width: 0;
     }
@@ -11,72 +66,42 @@
         width: 0;
     }
 }
-/* Apply the blinking animation to the line */
+
 .blinking-line {
-    height: 2px;
-    background-color: red;
+    height: 3px;
+    border-radius: 10px;
+    background-color: yellow;
     animation: blink 3s infinite;
     width: auto;
 }
+
 .heading-container {
-    display: inline-block; /* Ensure container only occupies the width of its content */
+    display: inline-block;
 }
-@keyframes slideInFromLeft {
-    0%
-
-{
-    transform: translateX(-100%);
-    opacity: 0;
-}
-
-100% {
-    transform: translateX(0);
-    opacity: 1;
-}
-
-}
-
-@keyframes slideInFromRight {
-    0% {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-.anim-left {
-    animation: slideInFromLeft 1s ease-in-out;
-}
-
-.anim-right {
-    animation: slideInFromRight 1s ease-in-out;
-}
-
 .home-heading {
     font-size: 32px;
     font-weight: bold;
-    color: #3c848d;
+    /*color: #016d3a;*/
+    color: #016d3a;
 }
 
 .home-paragraph {
-    font-size: 17px;
+    font-size: 18px;
     color: #100f0f;
     line-height: 1.6;
     margin-bottom: 30px;
+    
 }
-
 .zoom-effect {
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease-in-out;
+    transition: color 0.3s ease-in;
 }
 
     .zoom-effect:hover {
-        transform: scale(1.1);
+        transform: scale(0.9); /* Adjust the scale value as needed */
     }
 
 .text-hover:hover {
-    font-size: 18px;
+    font-size: 20px;
 }
+

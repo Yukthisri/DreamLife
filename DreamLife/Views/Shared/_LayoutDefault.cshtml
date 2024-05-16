@@ -11,10 +11,14 @@
         .abtn {
             font-weight: bold;
             font-size: large;
+            /* background: #f4f3ee; */
+
         }
 
             .abtn:hover {
                 font-weight: 500;
+                border: 3px solid #f8ec1c;
+                border-radius:15px;
             }
 
         p {
@@ -31,35 +35,6 @@
             text-align: center;
             display: block;
            
-        }
-
-        .slide {
-            display: none;
-            padding: 6px 20px;
-            font-style: italic;
-            font-weight: bold;
-        }
-
-        .active {
-            display: block;
-        }
-        .text-dark{
-            color: rgb(255 255 255) !important;
-        }
-
-        .btnrl {
-            padding: 0.5em 1.0em;
-            font-weight: 500;
-            position: relative;
-            overflow: hidden;     
-            background:white;
-        }
-                
-        .label {
-            position: relative;
-            top: -1px;
-            color:black!important;
-            text-decoration:none!important;
         }
 
         .transition {
@@ -80,22 +55,54 @@
             height: 14em;
         }
 
+        .slide {
+            display: none;
+            padding: 6px 20px;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        .active {
+            display: block;
+        }
+      
+
+        .btnrl {
+            padding: 0.5em 1.0em;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;     
+            background:white;
+        }
+                
+        .label {
+            position: relative;
+            top: -1px;
+            color:black!important;
+            text-decoration:none!important;
+        }
+
+
         .btnrl:active {
             transform: scale(0.97);
         }
 
+        .navbar{
+            /* background: #016d3a; */
+            background: #94d353;
+        }
         
     </style>
 </head>
 <body>
     <header class="sticky-top">
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white" style="background: linear-gradient(#060231,#0dcec4);">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light ">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a class="navbar-brand abtn" asp-area="" asp-controller="" asp-action="">
+                <a class="navbar-brand" asp-area="" asp-controller="" asp-action="">
                     <img class="img" src="~/images/dreamlifelogo.png" />
                 </a>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
@@ -179,7 +186,6 @@
                     currentSlide = 1; // Loop back to the first slide
                 }
 
-                // Show the next slide
                 $("#slide" + currentSlide).addClass("active");
             }, 3000);
         });

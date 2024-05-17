@@ -60,11 +60,11 @@
         }
 
         .dropdown-item:hover{
-            background: #0dcec4;
+            background: #94d353;
         }
 
         .dropdown-menu{
-            background: #0dcec4;
+            background: #94d353;
         }
         .text-dark {
             color: rgb(255 255 255) !important;
@@ -74,14 +74,21 @@
         }
 
         .nav-link:hover {
-                color: #0dcec4;
+                color: #94d353;
+        }
+
+        .register-login-buttons {
+            position: fixed;
+            right: 10px;
+            top:0px;
+            z-index: 1000;
         }
     </style>
 </head>
 <body>    
     <header class="sticky-top">
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white" style="background: linear-gradient(#060231,#0dcec4);">
-            <div class="container-fluid">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light" style="background: linear-gradient(#016d3a,#94d353);">
+            <div class="container-fluid justify-content-start">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -111,8 +118,10 @@
                         </li>
                     </ul>                    
                 </div>
+
+                <div class="register-login-buttons">
                 <ul class="nav align-items-center">
-                    <span class="d-none d-sm-block text-dark"><strong>@Accessor.HttpContext.Session.GetString("LOGINID")</strong></span>
+                    <span class="text-dark"><strong>@Accessor.HttpContext.Session.GetString("LOGINID")</strong></span>
                     <li class="nav-item dropdown dropdown-user">
                         <a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             @if (Accessor.HttpContext.Session.GetString("Gender") == "Male")
@@ -130,7 +139,8 @@
                             <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="Logout"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-power me-50"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg> Logout</a>
                         </div>
                     </li>
-                </ul>
+                    </ul>
+                </div>
             </div>
         </nav>
     </header>

@@ -6,12 +6,26 @@
 }
 
 <style>
+    .background-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%; /* Set height to cover the entire viewport */
+        z-index: -1;
+    }
+
+        .background-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
     body {
         background: linear-gradient(#060231,#0dcec4);
     }
     /* Provided styles */
     .container1 {
-        background: linear-gradient(#69ebd9, #11a6b9);
+        background: linear-gradient(#8bc34a, #11a6b9);
         max-width: 500px;
         border-radius: 40px;
         padding: 25px 35px;
@@ -99,6 +113,9 @@
     }
 </style>
 
+<div class="background-image">
+    <img src="~/images/DreamLife/11.jpg" alt="Background Image">
+</div>
 <div class="row">
 
     <div class="col-md-6">
@@ -169,6 +186,5 @@
         </div>
     </div>
     <div class="col-md-6">
-        <img src="~/images/vim4.jpeg" width="500px" height="400px" />
     </div>
 </div>

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace DreamLife.Controllers
 {
@@ -28,11 +29,11 @@ namespace DreamLife.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(UserViewModel model)
+        public async Task<IActionResult> Login(UserViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var user = _context.Users.Where(u => u.UserName == model.Name && u.Password == model.Password).FirstOrDefault();
+                var user = await _context.Users.Where(u => u.UserName == model.Name && u.Password == model.Password).FirstOrDefaultAsync();
 
                 if (user != null)
                 {
@@ -43,7 +44,7 @@ namespace DreamLife.Controllers
                     }
                     else if(user.Role == "User")
                     {
-                        var member = _context.MemberLevels.Where(u => u.UserId == model.Name).FirstOrDefault();
+                        var member = await _context.MemberLevels.Where(u => u.UserId == model.Name).FirstOrDefaultAsync();
                         if (member != null)
                         {
                             _httpContext.HttpContext.Session.SetString("LevelID", member.LevelId);

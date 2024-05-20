@@ -70,7 +70,7 @@
 .blinking-line {
     height: 3px;
     border-radius: 10px;
-    background-color: yellow;
+    background-color: #ff0000;
     animation: blink 3s infinite;
     width: auto;
 }

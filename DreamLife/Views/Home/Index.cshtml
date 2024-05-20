@@ -3,7 +3,75 @@
     Layout = "_LayoutDefault";
 }
 <link href="~/css/Home.css" rel="stylesheet" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    .container-box {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: 30px;
+    }
 
+    .arrow {
+        position: relative;
+        background: #ec4122;
+        width: 200px;
+        height: 46px; 
+        margin: 30px;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 44px;
+    }
+
+        .arrow::before,
+        .arrow::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+
+        .arrow::before {
+            top: 50%;
+            left: 100%;
+            border-color: transparent transparent transparent #ec4122;
+            border-width: 30px 0 30px 30px; /* Adjust the arrowhead size */
+            transform: translateY(-50%);
+        }
+
+        .arrow::after {
+            display: none; 
+        }
+
+        .arrow:nth-child(1) {
+            background: #ec4122e3;
+        }
+
+            .arrow:nth-child(1)::before {
+                border-left-color: #ec4122e3;
+            }
+
+        .arrow:nth-child(2) {
+            background: #ec4122d4;
+        }
+
+            .arrow:nth-child(2)::before {
+                border-left-color: #ec4122d4;
+            }
+
+        .arrow:nth-child(3) {
+            background: #ec4122b8;
+        }
+
+            .arrow:nth-child(3)::before {
+                border-left-color: #ec4122b8;
+            }
+
+    
+</style>
 <div class="row mb-3">
     <div class="col-sm-12 col-md-12 col-lg-6 anim-top mb-1">
         <img class="zoom-effect" src="~/images/im2.jpeg" width="100%" height="350px" />
@@ -41,18 +109,18 @@
         <p class="home-paragraph text-hover">We are one of the successful companies in Multilevel marketing, offering many plans to get more returns on the investment. We don't want to waste your money by promoting products and their sales. We follow a traditional approach in investment. You need to invest as per your financial comfort, and the main benefit from our company is that you will get returns from day one of your investments. Not only the investment, but you can also get referral benefits by introducing new members to the business.</p>
     </div>
 </div>
-<div class="row justify-content-center">
-    <div class="col-3 anim-left zoom-effect" style="border-radius: 20px; border: 2px solid; background: #ec4122e3; text-align: center; height: 90px;width: 200px;margin: 30px">
-        <h5 style="padding-top: 25px;"> Invest</h5>
+<div class="container-box">
+    <div class="arrow">
+        <span>Invest</span>
     </div>
-    <div class="col-3 anim-left zoom-effect" style="border-radius: 20px; border: 2px solid; background: #ec4122d4; text-align: center; height: 90px;width: 200px;margin: 30px">
-        <h5 style="padding-top: 25px;">Get ROI</h5>
+    <div class="arrow">
+        <span>Get ROI</span>
     </div>
-    <div class="col-3 anim-right zoom-effect" style="border-radius: 20px; border: 2px solid; background: #ec4122b8; text-align: center; height: 90px;width: 200px;margin: 30px">
-        <h5 style="padding-top: 25px;">Refer</h5>
+    <div class="arrow">
+        <span>Refer</span>
     </div>
-    <div class="col-3 anim-right zoom-effect" style="border-radius: 20px; border: 2px solid; background: #ec41227d; text-align: center; height: 90px;width: 200px;margin: 30px">
-        <h5 style="padding-top: 25px;"> Get LevelIncome</h5>
+    <div class="arrow">
+        <span>Get LevelIncome</span>
     </div>
 </div>
 <script>
